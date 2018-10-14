@@ -105,4 +105,27 @@ assertTest(lib.reverseArray,[56,78,93,103],[103,93,78,56]);
 assertTest(lib.reverseArray,[23,57,98,54],[54,98,57,23]);
 assertTest(lib.reverseArray,[-2,-1,0],[0,-1,-2]);
 
+// 16. Index of number.
+assertTest(lib.findIndex,[21,34,6],2,6);
+assertTest(lib.findIndex,[56,78,93,103],3,103);
+assertTest(lib.findIndex,[23,57,98,54],0,23);
+assertTest(lib.findIndex,[2,3,4,7,8,9,6,7,3,2,60,78,674],undefined,61);
+
+// 17. ascending order.
+assertTest(lib.ascend,[21,34,6],[6,21,34]);
+assertTest(lib.ascend,[56,78,93,103],[56,78,93,103]);
+assertTest(lib.ascend,[23,57,98,54],[23,54,57,98]);
+assertTest(lib.ascend,[2,3,4,7,8,9,6,7,3,2,60,78,674],[2,2,3,3,4,6,7,7,8,9,60,78,674]);
+
+// 18. descending order.
+assertTest(lib.descend,[21,34,6],[34,21,6]);
+assertTest(lib.descend,[56,78,93,103],[103,93,78,56]);
+assertTest(lib.descend,[23,57,98,54],[98,57,54,23]);
+assertTest(lib.descend,[2,3,4,7,8,9,6,7,3,2,60,78,674],[674,78,60,9,8,7,7,6,4,3,3,2,2]);
+
+// 19. Extract digits.
+assert.deepEqual(lib.extractArray(12345),[1,2,3,4,5]);
+assert.deepEqual(lib.extractArray(7568493),[7,5,6,8,4,9,3]);
+assert.deepEqual(lib.extractArray(0),[0]);
+assert.deepEqual(lib.extractArray(65),[6,5]);
 

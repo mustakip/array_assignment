@@ -140,3 +140,21 @@ exports.findIndex = function(numberArray,number) {
   }
 }
 
+exports.ascend = function(numberArray) { 
+  return sortArray(numberArray);
+}
+
+exports.descend = function(numberArray) {
+  let sortedArray = sortArray(numberArray);
+  return exports.reverseArray(sortedArray);
+}
+
+exports.extractArray = function(input) {
+  let number = ""+input;
+  let numberArray = [];
+  for(let index = 0; index < number.length; index++) {
+    numberArray[index] = +number[index];
+  }
+  return numberArray;
+}
+

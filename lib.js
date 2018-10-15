@@ -158,3 +158,84 @@ exports.extractArray = function(input) {
   return numberArray;
 }
 
+exports.extractUnique = function(numberArray) {
+  let uniqueArray = [];
+  for(element of numberArray) {
+    if(!uniqueArray.includes(element)) {
+      uniqueArray.push(element);
+    }
+  }
+  return uniqueArray;
+}
+
+exports.extractUnion = function(array1,array2) {
+  let uniqueArray = exports.extractUnique(array1);
+  for(element of array2) {
+    if(!uniqueArray.includes(element)) {
+      uniqueArray.push(element);
+    }
+  }
+  return uniqueArray;
+}
+
+exports.intersect = function(array1,array2) {
+  let uniqueArray = exports.extractUnique(array2);
+  let intersection = [];
+  for(element of uniqueArray) {
+    if(array1.includes(element)) {
+      intersection.push(element);
+    }
+  }
+  return intersection;
+}
+
+exports.differ = function(array1,array2) {
+  let uniqueArray = exports.extractUnique(array1);
+  let intersection = [];
+  for(element of uniqueArray) {
+    if(!array2.includes(element)) {
+      intersection.push(element);
+    }
+  }
+  return intersection;
+}
+
+exports.checkSubset = function(array1,array2) {
+  for(element of array2) {
+    if(!array1.includes(element)) {
+      return "No";
+    }
+    let index = array1.indexOf(element);
+    array1.splice(index,1);
+  }
+  return "Yes"
+}
+
+const findshorter = function(array1,array2) {
+  let shortArray = array1;
+  if(array2.length < array1.length) {
+    shortArray = array2;
+  }
+  return shortArray;
+}
+
+const findLongest = function(array1,array2) {
+  let longArray = array1;
+  if(array2.length > array1.length) {
+    longArray = array2;
+  }
+  return longArray;
+}
+
+exports.zip = function(array1,array2) {
+  let shortArray = findshorter(array1,array2);
+  let longArray = findLongest(array1,array2); 
+  let zipArray = [];
+  for(let index = 0; index < shortArray.length; index++) {
+    zipArray[index] = [shortArray[index],longArray[index]];
+  }
+  return zipArray;
+}
+
+
+ 

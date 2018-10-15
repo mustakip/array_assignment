@@ -129,3 +129,38 @@ assert.deepEqual(lib.extractArray(7568493),[7,5,6,8,4,9,3]);
 assert.deepEqual(lib.extractArray(0),[0]);
 assert.deepEqual(lib.extractArray(65),[6,5]);
 
+// 20. unique.
+assertTest(lib.extractUnique,[21,34,6,21,45,6,3,87,64,46,46],[21,34,6,45,3,87,64,46]);
+assertTest(lib.extractUnique,[56,78,78,93,103],[56,78,93,103]);
+assertTest(lib.extractUnique,[23,57,98,98,54],[23,57,98,54]);
+assertTest(lib.extractUnique,[2,3,4,7,8,9,6,7,3,2,60,78,674],[2,3,4,7,8,9,6,60,78,674]);
+
+// 21. union.
+assert.deepEqual(lib.extractUnion([1,2,3,2,4,4,30,5],[1,4,2,30,4,50]),[1,2,3,4,30,5,50]);
+assert.deepEqual(lib.extractUnion([-1,-4,-1,7,6,9,9,0],[7,-5,6,8,4,9,3]),[-1,-4,7,6,9,0,-5,8,4,3]);
+assert.deepEqual(lib.extractUnion([0],[0]),[0]);
+assert.deepEqual(lib.extractUnion([6,5],[6,5]),[6,5]);
+
+// 22. intersection.
+assert.deepEqual(lib.intersect([1,2,3,2,4,4,30,5],[1,4,2,30,4,50]),[1,4,2,30]);
+assert.deepEqual(lib.intersect([-1,-4,-1,7,6,9,9,0],[7,-5,6,8,-1,4,9,3]),[7,6,-1,9]);
+assert.deepEqual(lib.intersect([0],[0]),[0]);
+assert.deepEqual(lib.intersect([6,5],[6,5]),[6,5]);
+
+// 23. Difference.
+assert.deepEqual(lib.differ([1,2,3,2,4,4,30,5],[1,4,2,30,4,50]),[3,5]);
+assert.deepEqual(lib.differ([-1,-4,-1,7,6,9,9,0],[7,-5,8,-1,4,9,3]),[-4,6,0]);
+assert.deepEqual(lib.differ([0],[0]),[]);
+assert.deepEqual(lib.differ([6,5],[6,5]),[]);
+
+// 24. Is Subset.
+assert.deepEqual(lib.checkSubset([1,2],[1]),"Yes");
+assert.deepEqual(lib.checkSubset([1,2,5,7,3,1],[2,1,1]),"Yes");
+assert.deepEqual(lib.checkSubset([1,2,],[1,]),"Yes");
+assert.deepEqual(lib.checkSubset([2,5,7,3,1],[2,1,1]),"No");
+
+// 25. Zip.
+assert.deepEqual(lib.zip([1,2],[1]),[[1,1]]);
+assert.deepEqual(lib.zip([1,2,5,7,3,1],[2,1,1]),[[2,1],[1,2],[1,5]]);
+assert.deepEqual(lib.zip([1,2,],[1,]),[[1,1]]);
+assert.deepEqual(lib.zip([2,5,7,3,1],[2,1,1]),[[2,2],[1,5],[1,7]]);

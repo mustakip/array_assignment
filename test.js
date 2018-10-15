@@ -164,3 +164,15 @@ assert.deepEqual(lib.zip([1,2],[1]),[[1,1]]);
 assert.deepEqual(lib.zip([1,2,5,7,3,1],[2,1,1]),[[2,1],[1,2],[1,5]]);
 assert.deepEqual(lib.zip([1,2,],[1,]),[[1,1]]);
 assert.deepEqual(lib.zip([2,5,7,3,1],[2,1,1]),[[2,2],[1,5],[1,7]]);
+
+// 26. Rotate.
+assert.deepEqual(lib.rotate([1,2],1),[2,1]);
+assert.deepEqual(lib.rotate([1,2,5,7,3,1],3),[7,3,1,1,2,5]);
+assert.deepEqual(lib.rotate([0],0),[0]);
+assert.deepEqual(lib.rotate([2,5,7,3,1],4),[1,2,5,7,3]);
+
+// 27. partition.
+assert.deepEqual(lib.partition([1,2],1),[[1],[2]]);
+assert.deepEqual(lib.partition([1,2,5,7,3,1],3),[[1,2,1,3],[5,7]]);
+assert.deepEqual(lib.partition([0],0),[[0],[]]);
+assert.deepEqual(lib.partition([2,5,7,3,1],2),[[1,2],[5,7,3]]);

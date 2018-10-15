@@ -104,24 +104,32 @@ exports.countOdd = function(numberArray) {
 }
 
 exports.countNumbersAbove = function(numberArray,threshold) {
-  let numbersAbove = [];
-  for(let number of numberArray) {
-    if(number > threshold){
-      numbersAbove.push(number);
-    }
-  }
-  return  numbersAbove.length;
+  let aboveNumbers = numbersAbove(numberArray,threshold);
+  return  aboveNumbers.length;
 }
 
-
-exports.countNumbersBelow = function(numberArray,threshold) {
-  let numbersBelow = [];
+const numbersAbove = function(numberArray,threshold) {
+  let above = [];
   for(let number of numberArray) {
-    if(number < threshold){
-      numbersBelow.push(number);
+    if(number > threshold){
+      above.push(number);
     }
   }
-  return  numbersBelow.length;
+  return above;
+}
+const numbersBelow = function(numberArray,threshold) {
+  let below = [];
+  for(let number of numberArray) {
+    if(number < threshold){
+      below.push(number);
+    }
+  }
+  return below;
+}
+
+exports.countNumbersBelow = function(numberArray,threshold) {
+  let belowNumbers = numbersBelow(numberArray,threshold);
+  return  belowNumbers.length;
 }
 
 exports.reverseArray = function(numberArray) {
@@ -237,5 +245,18 @@ exports.zip = function(array1,array2) {
   return zipArray;
 }
 
-
+exports.rotate = function(array,index) {
+  for(let post = 0; post < index; post++) {
+    array.push(array[0]);
+    array.shift();
+  }
+  return array;
+}
  
+exports.partition = function(array,number) {
+  let partition = [];
+  partition[0] = numbersBelow(array,number);
+  partition[0].push(number);
+  partition[1] = numbersAbove(array,number);
+  return partition;
+}

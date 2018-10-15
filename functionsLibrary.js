@@ -109,21 +109,11 @@ exports.countNumbersAbove = function(numberArray,threshold) {
 }
 
 const numbersAbove = function(numberArray,threshold) {
-  let above = [];
-  for(let number of numberArray) {
-    if(number > threshold){
-      above.push(number);
-    }
-  }
+  let above = numberArray.filter(number => number > threshold);
   return above;
 }
 const numbersBelow = function(numberArray,threshold) {
-  let below = [];
-  for(let number of numberArray) {
-    if(number < threshold){
-      below.push(number);
-    }
-  }
+  let below = numberArray.filter(number => number < threshold);
   return below;
 }
 

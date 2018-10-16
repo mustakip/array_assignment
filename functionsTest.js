@@ -1,24 +1,22 @@
 const assert = require("assert");
-const lib = require("./functionsLibrary.js");
-
-
+const lib = require("./functionsLibrary.js"); 
 const testAssertion = function(func,input,expectedOutput,secondInput) { 
   return assert.deepEqual(func(input,secondInput),expectedOutput);
 }
 
 // 1. selecting odd number.
-testAssertion(lib.extractOdd,[21,34,6],[21]);
-testAssertion(lib.extractOdd,[56,78,93,103],[93,103]);
-testAssertion(lib.extractOdd,[23,57,98,54],[23,57]);
-testAssertion(lib.extractOdd,[2,3,4,7,8,9,6,7,3,2,60,78,674],[3,7,9,7,3]);
-testAssertion(lib.extractOdd,[-2,-1,0],[-1]);
+////testAssertion(lib.selectOdd,[21,34,6],[21]);
+//testAssertion(lib.selectOdd,[56,78,93,103],[93,103]);
+testAssertion(lib.selectOdd,[23,57,98,54],[23,57]);
+testAssertion(lib.selectOdd,[2,3,4,7,8,9,6,7,3,2,60,78,674],[3,7,9,7,3]);
+testAssertion(lib.selectOdd,[-2,-1,0],[-1]);
 
 // 2. selecting even number.
-testAssertion(lib.extractEven,[21,34,6],[34,6]);
-testAssertion(lib.extractEven,[56,78,93,103],[56,78]);
-testAssertion(lib.extractEven,[23,57,98,54],[98,54]);
-testAssertion(lib.extractEven,[2,3,4,7,8,9,6,7,3,2,60,78,674],[2,4,8,6,2,60,78,674]);
-testAssertion(lib.extractEven,[-2,-1,0],[-2,0]);
+testAssertion(lib.selectEven,[21,34,6],[34,6]);
+testAssertion(lib.selectEven,[56,78,93,103],[56,78]);
+testAssertion(lib.selectEven,[23,57,98,54],[98,54]);
+testAssertion(lib.selectEven,[2,3,4,7,8,9,6,7,3,2,60,78,674],[2,4,8,6,2,60,78,674]);
+testAssertion(lib.selectEven,[-2,-1,0],[-2,0]);
 
 // 3. sum of list of numbers.
 testAssertion(lib.addNumbers,[21,34,6],61);
@@ -34,11 +32,11 @@ testAssertion(lib.reverse,[23,57,98,54],[54,98,57,23]);
 testAssertion(lib.reverse,[-2,-1,0],[0,-1,-2]);
 
 // 5. selecting every second element. 
-testAssertion(lib.extractSecond,[21,34,6],[34]);
-testAssertion(lib.extractSecond,[56,78,93,103],[78,103]);
-testAssertion(lib.extractSecond,[23,57,98,54],[57,54]);
-testAssertion(lib.extractSecond,[2,3,4,7,8,9,6,7,3,2,60,78,674],[3,7,9,7,2,78]);
-testAssertion(lib.extractSecond,[-2,-1,0],[-1]);
+testAssertion(lib.selectSecond,[21,34,6],[34]);
+testAssertion(lib.selectSecond,[56,78,93,103],[78,103]);
+testAssertion(lib.selectSecond,[23,57,98,54],[57,54]);
+testAssertion(lib.selectSecond,[2,3,4,7,8,9,6,7,3,2,60,78,674],[3,7,9,7,2,78]);
+testAssertion(lib.selectSecond,[-2,-1,0],[-1]);
   
 // 6. reverse fibonacci.
 testAssertion(lib.reverseFibonacci,5,[3,2,1,1,0]);
@@ -124,22 +122,22 @@ testAssertion(lib.descend,[23,57,98,54],[98,57,54,23]);
 testAssertion(lib.descend,[2,3,4,7,8,9,6,7,3,2,60,78,674],[674,78,60,9,8,7,7,6,4,3,3,2,2]);
 
 // 19. Extract digits.
-assert.deepEqual(lib.extractArray(12345),[1,2,3,4,5]);
-assert.deepEqual(lib.extractArray(7568493),[7,5,6,8,4,9,3]);
-assert.deepEqual(lib.extractArray(0),[0]);
-assert.deepEqual(lib.extractArray(65),[6,5]);
+assert.deepEqual(lib.selectArray(12345),[1,2,3,4,5]);
+assert.deepEqual(lib.selectArray(7568493),[7,5,6,8,4,9,3]);
+assert.deepEqual(lib.selectArray(0),[0]);
+assert.deepEqual(lib.selectArray(65),[6,5]);
 
 // 20. unique.
-testAssertion(lib.extractUnique,[21,34,6,21,45,6,3,87,64,46,46],[21,34,6,45,3,87,64,46]);
-testAssertion(lib.extractUnique,[56,78,78,93,103],[56,78,93,103]);
-testAssertion(lib.extractUnique,[23,57,98,98,54],[23,57,98,54]);
-testAssertion(lib.extractUnique,[2,3,4,7,8,9,6,7,3,2,60,78,674],[2,3,4,7,8,9,6,60,78,674]);
+testAssertion(lib.selectUnique,[21,34,6,21,45,6,3,87,64,46,46],[21,34,6,45,3,87,64,46]);
+testAssertion(lib.selectUnique,[56,78,78,93,103],[56,78,93,103]);
+testAssertion(lib.selectUnique,[23,57,98,98,54],[23,57,98,54]);
+testAssertion(lib.selectUnique,[2,3,4,7,8,9,6,7,3,2,60,78,674],[2,3,4,7,8,9,6,60,78,674]);
 
 // 21. union.
-assert.deepEqual(lib.extractUnion([1,2,3,2,4,4,30,5],[1,4,2,30,4,50]),[1,2,3,4,30,5,50]);
-assert.deepEqual(lib.extractUnion([-1,-4,-1,7,6,9,9,0],[7,-5,6,8,4,9,3]),[-1,-4,7,6,9,0,-5,8,4,3]);
-assert.deepEqual(lib.extractUnion([0],[0]),[0]);
-assert.deepEqual(lib.extractUnion([6,5],[6,5]),[6,5]);
+assert.deepEqual(lib.selectUnion([1,2,3,2,4,4,30,5],[1,4,2,30,4,50]),[1,2,3,4,30,5,50]);
+assert.deepEqual(lib.selectUnion([-1,-4,-1,7,6,9,9,0],[7,-5,6,8,4,9,3]),[-1,-4,7,6,9,0,-5,8,4,3]);
+assert.deepEqual(lib.selectUnion([0],[0]),[0]);
+assert.deepEqual(lib.selectUnion([6,5],[6,5]),[6,5]);
 
 // 22. intersection.
 assert.deepEqual(lib.intersect([1,2,3,2,4,4,30,5],[1,4,2,30,4,50]),[1,4,2,30]);

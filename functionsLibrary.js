@@ -141,13 +141,22 @@ exports.findIndex = function(inputNumbers,number) {
   }
 }
 
-exports.ascend = function(inputNumbers) { 
-  return sortArray(inputNumbers);
+exports.checkAscending = function(inputNumbers) { 
+  for(let index = 0; index < inputNumbers.length; index++) {
+    if(inputNumbers[index] > inputNumbers[index+1]){
+      return "No";
+    }
+  }
+  return "Yes";
 }
 
-exports.descend = function(inputNumbers) {
-  let sortedArray = sortArray(inputNumbers);
-  return exports.reverseArray(sortedArray);
+exports.checkDescending = function(inputNumbers) {
+  for(let index = 0; index < inputNumbers.length; index++) {
+    if(inputNumbers[index] < inputNumbers[index+1]){
+      return "No"
+    }
+  }
+  return "Yes";
 }
 
 exports.selectArray = function(input) {

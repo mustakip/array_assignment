@@ -5,8 +5,8 @@ const testAssertion = function(func,input,expectedOutput,secondInput) {
 }
 
 // 1. selecting odd number.
-////testAssertion(lib.selectOdd,[21,34,6],[21]);
-//testAssertion(lib.selectOdd,[56,78,93,103],[93,103]);
+testAssertion(lib.selectOdd,[21,34,6],[21]);
+testAssertion(lib.selectOdd,[56,78,93,103],[93,103]);
 testAssertion(lib.selectOdd,[23,57,98,54],[23,57]);
 testAssertion(lib.selectOdd,[2,3,4,7,8,9,6,7,3,2,60,78,674],[3,7,9,7,3]);
 testAssertion(lib.selectOdd,[-2,-1,0],[-1]);
@@ -109,17 +109,17 @@ testAssertion(lib.findIndex,[56,78,93,103],3,103);
 testAssertion(lib.findIndex,[23,57,98,54],0,23);
 testAssertion(lib.findIndex,[2,3,4,7,8,9,6,7,3,2,60,78,674],undefined,61);
 
-// 17. ascending order.
-testAssertion(lib.ascend,[21,34,6],[6,21,34]);
-testAssertion(lib.ascend,[56,78,93,103],[56,78,93,103]);
-testAssertion(lib.ascend,[23,57,98,54],[23,54,57,98]);
-testAssertion(lib.ascend,[2,3,4,7,8,9,6,7,3,2,60,78,674],[2,2,3,3,4,6,7,7,8,9,60,78,674]);
+// 17. check ascending order.
+testAssertion(lib.checkAscending,[21,34,6],"No");
+testAssertion(lib.checkAscending,[56,78,93,103],"Yes");
+testAssertion(lib.checkAscending,[23,54,57,98],"Yes");
+testAssertion(lib.checkAscending,[2,3,4,7,8,9,6,7,3,2,60,78,674],"No");
 
-// 18. descending order.
-testAssertion(lib.descend,[21,34,6],[34,21,6]);
-testAssertion(lib.descend,[56,78,93,103],[103,93,78,56]);
-testAssertion(lib.descend,[23,57,98,54],[98,57,54,23]);
-testAssertion(lib.descend,[2,3,4,7,8,9,6,7,3,2,60,78,674],[674,78,60,9,8,7,7,6,4,3,3,2,2]);
+// 18. check descending order.
+testAssertion(lib.checkDescending,[34,21,6],"Yes");
+testAssertion(lib.checkDescending,[56,78,93,103],"No");
+testAssertion(lib.checkDescending,[23,57,98,54],"No");
+testAssertion(lib.checkDescending,[674,78,60,9,8,7,7,6,4,3,3,2,2],"Yes");
 
 // 19. Extract digits.
 assert.deepEqual(lib.selectArray(12345),[1,2,3,4,5]);
@@ -175,3 +175,4 @@ assert.deepEqual(lib.partition([1,2,5,7,3,1],3),[[1,2,1,3],[5,7]]);
 assert.deepEqual(lib.partition([0],0),[[0],[]]);
 assert.deepEqual(lib.partition([2,5,7,3,1],2),[[1,2],[5,7,3]]);
 
+console.log("Test Passed ...!!!!");

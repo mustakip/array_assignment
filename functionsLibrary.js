@@ -1,4 +1,4 @@
-exports.selectOdd = function(inputNumbers) {
+const selectOdd =function(inputNumbers) {
   let selectedOdd = [];
   for(let number of inputNumbers) {
     if(number % 2 != 0){
@@ -8,7 +8,7 @@ exports.selectOdd = function(inputNumbers) {
   return  selectedOdd;
 }
 
-exports.selectEven = function(inputNumbers) {
+const selectEven = function(inputNumbers) {
   let selectedEven = [];
   for(let number of inputNumbers) {
     if(number % 2 == 0){
@@ -18,7 +18,7 @@ exports.selectEven = function(inputNumbers) {
   return  selectedEven;
 }
 
-exports.addNumbers = function(inputNumbers) {
+const addNumbers = function(inputNumbers) {
   let sum = 0;
   for(number of inputNumbers) {
     sum = sum + number;
@@ -26,7 +26,7 @@ exports.addNumbers = function(inputNumbers) {
   return sum;
 }
 
-exports.reverse = function(inputNumbers) {
+const reverse = function(inputNumbers) {
   let reversedArray = [];
   for(let index = 0;index < inputNumbers.length;index++) {
     reversedArray[index] = inputNumbers[inputNumbers.length - 1 - index];
@@ -34,14 +34,14 @@ exports.reverse = function(inputNumbers) {
   return reversedArray;
 }
 
-exports.selectSecond = function(inputNumbers) {
+const selectSecond = function(inputNumbers) {
   let reversedArray = [];
   for(index = 1 ; index < inputNumbers.length ; index += 2) {
     reversedArray.push(inputNumbers[index]);
   }
   return reversedArray;
 }
-exports.reverseFibonacci = function(length) {
+const reverseFibonacci = function(length) {
   let fibonacci = [];
   let firstElement = 0;
   let secondElement = 1;
@@ -52,7 +52,7 @@ exports.reverseFibonacci = function(length) {
     firstElement = secondElement;
     secondElement = sum;
   }
-  return exports.reverse(fibonacci);
+  return reverse(fibonacci);
 }
     
 const sortArray = function(unsortedArray) {
@@ -74,21 +74,21 @@ const swapElements = function(unsortedArray) {
   return unsortedArray;
 }
 
-exports.findGreatest = function(inputNumbers) {
+const findGreatest = function(inputNumbers) {
   sortArray(inputNumbers);
   return inputNumbers[inputNumbers.length - 1];
 }
 
-exports.findLowest = function(inputNumbers) {
+const findLowest = function(inputNumbers) {
   sortArray(inputNumbers);
   return inputNumbers[0];
 }
 
-exports.average = function(inputNumbers) {
-  return exports.addNumbers(inputNumbers)/inputNumbers.length;
+const average = function(inputNumbers) {
+  return addNumbers(inputNumbers)/inputNumbers.length;
 }
 
-exports.findLength = function(inputNumbers) {
+const findLength = function(inputNumbers) {
   lengthArray = [];
   for(index = 0;index < inputNumbers.length;index++) {
     lengthArray[index] = inputNumbers[index].length;
@@ -96,17 +96,17 @@ exports.findLength = function(inputNumbers) {
   return lengthArray;
 }
 
-exports.countEven = function(inputNumbers) {
-  evenArray = exports.selectEven(inputNumbers);
+const countEven = function(inputNumbers) {
+  evenArray = selectEven(inputNumbers);
   return evenArray.length;
 }
 
-exports.countOdd = function(inputNumbers) {
-  oddArray = exports.selectOdd(inputNumbers);
+const countOdd = function(inputNumbers) {
+  oddArray = selectOdd(inputNumbers);
   return oddArray.length;
 }
 
-exports.countNumbersAbove = function(inputNumbers,threshold) {
+const countNumbersAbove = function(inputNumbers,threshold) {
   let aboveNumbers = numbersAbove(inputNumbers,threshold);
   return  aboveNumbers.length;
 }
@@ -120,12 +120,12 @@ const numbersBelow = function(inputNumbers,threshold) {
   return below;
 }
 
-exports.countNumbersBelow = function(inputNumbers,threshold) {
+const countNumbersBelow = function(inputNumbers,threshold) {
   let belowNumbers = numbersBelow(inputNumbers,threshold);
   return  belowNumbers.length;
 }
 
-exports.reverseArray = function(inputNumbers) {
+const reverseArray = function(inputNumbers) {
   let reversedArray = [];
   for(let index = 0;index < inputNumbers.length;index++) {
     reversedArray[index] = inputNumbers[inputNumbers.length - 1 - index];
@@ -133,7 +133,7 @@ exports.reverseArray = function(inputNumbers) {
   return reversedArray;
 }
 
-exports.findIndex = function(inputNumbers,number) {
+const findIndex = function(inputNumbers,number) {
   for(index in inputNumbers) {
     if(inputNumbers[index] == number) {
       return index;
@@ -141,7 +141,7 @@ exports.findIndex = function(inputNumbers,number) {
   }
 }
 
-exports.checkAscending = function(inputNumbers) { 
+const checkAscending = function(inputNumbers) { 
   for(let index = 0; index < inputNumbers.length; index++) {
     if(inputNumbers[index] > inputNumbers[index+1]){
       return "No";
@@ -150,7 +150,7 @@ exports.checkAscending = function(inputNumbers) {
   return "Yes";
 }
 
-exports.checkDescending = function(inputNumbers) {
+const checkDescending = function(inputNumbers) {
   for(let index = 0; index < inputNumbers.length; index++) {
     if(inputNumbers[index] < inputNumbers[index+1]){
       return "No"
@@ -159,7 +159,7 @@ exports.checkDescending = function(inputNumbers) {
   return "Yes";
 }
 
-exports.selectArray = function(input) {
+const selectArray = function(input) {
   let number = ""+input;
   let inputNumbers = [];
   for(let index = 0; index < number.length; index++) {
@@ -168,7 +168,7 @@ exports.selectArray = function(input) {
   return inputNumbers;
 }
 
-exports.selectUnique = function(inputNumbers) {
+const selectUnique = function(inputNumbers) {
   let uniqueArray = [];
   for(element of inputNumbers) {
     if(!uniqueArray.includes(element)) {
@@ -178,8 +178,8 @@ exports.selectUnique = function(inputNumbers) {
   return uniqueArray;
 }
 
-exports.selectUnion = function(array1,array2) {
-  let uniqueArray = exports.selectUnique(array1);
+const selectUnion = function(array1,array2) {
+  let uniqueArray = selectUnique(array1);
   for(element of array2) {
     if(!uniqueArray.includes(element)) {
       uniqueArray.push(element);
@@ -188,8 +188,8 @@ exports.selectUnion = function(array1,array2) {
   return uniqueArray;
 }
 
-exports.intersect = function(array1,array2) {
-  let uniqueArray = exports.selectUnique(array2);
+const intersect = function(array1,array2) {
+  let uniqueArray = selectUnique(array2);
   let intersection = [];
   for(element of uniqueArray) {
     if(array1.includes(element)) {
@@ -199,8 +199,8 @@ exports.intersect = function(array1,array2) {
   return intersection;
 }
 
-exports.differ = function(array1,array2) {
-  let uniqueArray = exports.selectUnique(array1);
+const differ = function(array1,array2) {
+  let uniqueArray = selectUnique(array1);
   let intersection = [];
   for(element of uniqueArray) {
     if(!array2.includes(element)) {
@@ -210,7 +210,7 @@ exports.differ = function(array1,array2) {
   return intersection;
 }
 
-exports.checkSubset = function(array1,array2) {
+const checkSubset = function(array1,array2) {
   for(element of array2) {
     if(!array1.includes(element)) {
       return "No";
@@ -237,7 +237,7 @@ const findLongest = function(array1,array2) {
   return longArray;
 }
 
-exports.zip = function(array1,array2) {
+const zip = function(array1,array2) {
   let shortArray = findshorter(array1,array2);
   let longArray = findLongest(array1,array2); 
   let zipArray = [];
@@ -247,7 +247,7 @@ exports.zip = function(array1,array2) {
   return zipArray;
 }
 
-exports.rotate = function(array,index) {
+const rotate = function(array,index) {
   for(let post = 0; post < index; post++) {
     array.push(array[0]);
     array.shift();
@@ -255,10 +255,42 @@ exports.rotate = function(array,index) {
   return array;
 }
  
-exports.partition = function(array,number) {
+const partition = function(array,number) {
   let partition = [];
   partition[0] = numbersBelow(array,number);
   partition[0].push(number);
   partition[1] = numbersAbove(array,number);
   return partition;
 }
+
+exports.average = average;
+exports.partition = partition;
+exports.rotate = rotate;
+exports.zip = zip;
+exports.findLongest = findLongest;
+exports.findshorter = findshorter;
+exports.checkSubset = checkSubset;
+exports.differ = differ;
+exports.intersect = intersect;
+exports.selectUnion = selectUnion;
+exports.selectUnique = selectUnique;
+exports.selectArray = selectArray;
+exports.checkDescending = checkDescending;
+exports.checkAscending = checkAscending;
+exports.findIndex = findIndex;
+exports.reverseArray = reverseArray;
+exports.countNumbersBelow = countNumbersBelow;
+exports.countNumbersAbove = countNumbersAbove;
+exports.countOdd = countOdd;
+exports.countEven = countEven;
+exports.findLength = findLength;
+exports.findLowest = findLowest;
+exports.findGreatest = findGreatest;
+exports.swapElements = swapElements;
+exports.sortArray = sortArray;
+exports.reverseFibonacci = reverseFibonacci;
+exports.selectSecond = selectSecond;
+exports.reverse = reverse;
+exports.addNumbers = addNumbers;
+exports.selectEven = selectEven;
+exports.selectOdd = selectOdd;

@@ -1,89 +1,89 @@
 const assert = require("assert");
-const lib = require("./functionsLibrary.js"); 
+const lib = require("./arrayFunctionsLibrary.js"); 
 const testAssertion = function(func,input,expectedOutput,secondInput) { 
   return assert.deepEqual(func(input,secondInput),expectedOutput);
 }
 
 // 1. selecting odd number.
-testAssertion(lib.selectOdd,[21,34,6],[21]);
-testAssertion(lib.selectOdd,[56,78,93,103],[93,103]);
-testAssertion(lib.selectOdd,[23,57,98,54],[23,57]);
-testAssertion(lib.selectOdd,[2,3,4,7,8,9,6,7,3,2,60,78,674],[3,7,9,7,3]);
 testAssertion(lib.selectOdd,[-2,-1,0],[-1]);
+testAssertion(lib.selectOdd,[21,34,6],[21]);
+testAssertion(lib.selectOdd,[23,57,98,54],[23,57]);
+testAssertion(lib.selectOdd,[56,78,93,103],[93,103]);
+testAssertion(lib.selectOdd,[2,3,4,7,8,9,6,7,3,2,60,78,674],[3,7,9,7,3]);
 
 // 2. selecting even number.
-testAssertion(lib.selectEven,[21,34,6],[34,6]);
-testAssertion(lib.selectEven,[56,78,93,103],[56,78]);
-testAssertion(lib.selectEven,[23,57,98,54],[98,54]);
-testAssertion(lib.selectEven,[2,3,4,7,8,9,6,7,3,2,60,78,674],[2,4,8,6,2,60,78,674]);
 testAssertion(lib.selectEven,[-2,-1,0],[-2,0]);
+testAssertion(lib.selectEven,[21,34,6],[34,6]);
+testAssertion(lib.selectEven,[23,57,98,54],[98,54]);
+testAssertion(lib.selectEven,[56,78,93,103],[56,78]);
+testAssertion(lib.selectEven,[2,3,4,7,8,9,6,7,3,2,60,78,674],[2,4,8,6,2,60,78,674]);
 
 // 3. sum of list of numbers.
 testAssertion(lib.addNumbers,[21,34,6],61);
-testAssertion(lib.addNumbers,[56,78,93,103],330);
-testAssertion(lib.addNumbers,[23,57,98,54],232);
-testAssertion(lib.addNumbers,[2,3,4,7,8,9,6,7,3,2,60,78,674],863);
 testAssertion(lib.addNumbers,[-2,-1,0],-3);
+testAssertion(lib.addNumbers,[23,57,98,54],232);
+testAssertion(lib.addNumbers,[56,78,93,103],330);
+testAssertion(lib.addNumbers,[2,3,4,7,8,9,6,7,3,2,60,78,674],863);
 
 // 4. printing reverse.
 testAssertion(lib.reverse,[21,34,6],[6,34,21]);
-testAssertion(lib.reverse,[56,78,93,103],[103,93,78,56]);
-testAssertion(lib.reverse,[23,57,98,54],[54,98,57,23]);
 testAssertion(lib.reverse,[-2,-1,0],[0,-1,-2]);
+testAssertion(lib.reverse,[23,57,98,54],[54,98,57,23]);
+testAssertion(lib.reverse,[56,78,93,103],[103,93,78,56]);
 
 // 5. selecting every second element. 
-testAssertion(lib.selectSecond,[21,34,6],[34]);
-testAssertion(lib.selectSecond,[56,78,93,103],[78,103]);
-testAssertion(lib.selectSecond,[23,57,98,54],[57,54]);
-testAssertion(lib.selectSecond,[2,3,4,7,8,9,6,7,3,2,60,78,674],[3,7,9,7,2,78]);
-testAssertion(lib.selectSecond,[-2,-1,0],[-1]);
+testAssertion(lib.selectEverySecondNo,[21,34,6],[34]);
+testAssertion(lib.selectEverySecondNo,[-2,-1,0],[-1]);
+testAssertion(lib.selectEverySecondNo,[23,57,98,54],[57,54]);
+testAssertion(lib.selectEverySecondNo,[56,78,93,103],[78,103]);
+testAssertion(lib.selectEverySecondNo,[2,3,4,7,8,9,6,7,3,2,60,78,674],[3,7,9,7,2,78]);
   
 // 6. reverse fibonacci.
+testAssertion(lib.reverseFibonacci,0,[]);
+testAssertion(lib.reverseFibonacci,1,[0]);
+testAssertion(lib.reverseFibonacci,2,[1,0]);
 testAssertion(lib.reverseFibonacci,5,[3,2,1,1,0]);
 testAssertion(lib.reverseFibonacci,10,[34,21,13,8,5,3,2,1,1,0]);
-testAssertion(lib.reverseFibonacci,1,[0]);
-testAssertion(lib.reverseFibonacci,0,[]);
-testAssertion(lib.reverseFibonacci,2,[1,0]);
 
 // 7. greatest numberin a list.
-testAssertion(lib.findGreatest,[21,34,6],34);
-testAssertion(lib.findGreatest,[56,78,93,103],103);
-testAssertion(lib.findGreatest,[23,57,98,54],98);
-testAssertion(lib.findGreatest,[2,3,4,7,8,9,6,7,3,2,60,78,674],674);
 testAssertion(lib.findGreatest,[-2,-1,0],0);
+testAssertion(lib.findGreatest,[21,34,6],34);
+testAssertion(lib.findGreatest,[23,57,98,54],98);
+testAssertion(lib.findGreatest,[56,78,93,103],103);
+testAssertion(lib.findGreatest,[2,3,4,7,8,9,6,7,3,2,60,78,674],674);
 
 // 8. lowest number in a list.
 testAssertion(lib.findLowest,[21,34,6],6);
-testAssertion(lib.findLowest,[56,78,93,103],56);
-testAssertion(lib.findLowest,[23,57,98,54],23);
-testAssertion(lib.findLowest,[2,3,4,7,8,9,6,7,3,2,60,78,674],2);
 testAssertion(lib.findLowest,[-2,-1,0],-2);
+testAssertion(lib.findLowest,[23,57,98,54],23);
+testAssertion(lib.findLowest,[56,78,93,103],56);
+testAssertion(lib.findLowest,[2,3,4,7,8,9,6,7,3,2,60,78,674],2);
 
 // 9. average of a list.
-testAssertion(lib.average,[21,34,8],21);
-testAssertion(lib.average,[56,78,93,103],82.5);
-testAssertion(lib.average,[23,57,98,54],58);
 testAssertion(lib.average,[-2,-1,0],-1);
+testAssertion(lib.average,[21,34,8],21);
+testAssertion(lib.average,[23,57,98,54],58);
+testAssertion(lib.average,[56,78,93,103],82.5);
 
 // 10. mapping lengths.
-testAssertion(lib.findLength,["annu"],[4]);
 testAssertion(lib.findLength,[""],[0]);
+testAssertion(lib.findLength,["annu"],[4]);
 testAssertion(lib.findLength,["leela","malliSir"],[5,8]);
 testAssertion(lib.findLength,["musta","afftab","sai","deepika"],[5,6,3,7]);
 
 // 11. counting odd numbers.
 testAssertion(lib.countOdd,[21,34,6],1);
-testAssertion(lib.countOdd,[56,78,93,103],2);
-testAssertion(lib.countOdd,[23,57,98,54],2);
-testAssertion(lib.countOdd,[2,3,4,7,8,9,6,7,3,2,60,78,674],5);
 testAssertion(lib.countOdd,[-2,-1,0],1);
+testAssertion(lib.countOdd,[23,57,98,54],2);
+testAssertion(lib.countOdd,[56,78,93,103],2);
+testAssertion(lib.countOdd,[2,3,4,7,8,9,6,7,3,2,60,78,674],5);
 
 // 12. counting even numbers.
 testAssertion(lib.countEven,[21,34,6],2);
-testAssertion(lib.countEven,[56,78,93,103],2);
-testAssertion(lib.countEven,[23,57,98,54],2);
-testAssertion(lib.countEven,[2,3,4,7,8,9,6,7,3,2,60,78,674],8);
 testAssertion(lib.countEven,[-2,-1,0],2);
+testAssertion(lib.countEven,[23,57,98,54],2);
+testAssertion(lib.countEven,[56,78,93,103],2);
+testAssertion(lib.countEven,[2,3,4,7,8,9,6,7,3,2,60,78,674],8);
 
 // 13. counting how many numbers above a threshold.
 testAssertion(lib.countNumbersAbove,[21,34,6],2,8);

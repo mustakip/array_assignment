@@ -34,12 +34,12 @@ const reverse = function(inputNumbers) {
   return reversedArray;
 }
 
-const selectSecond = function(inputNumbers) {
-  let reversedArray = [];
+const selectEverySecondNo = function(inputNumbers) {
+  let selectedNumberArray = [];
   for(index = 1 ; index < inputNumbers.length ; index += 2) {
-    reversedArray.push(inputNumbers[index]);
+    selectedNumberArray.push(inputNumbers[index]);
   }
-  return reversedArray;
+  return selectedNumberArray;
 }
 const reverseFibonacci = function(length) {
   let fibonacci = [];
@@ -54,7 +54,7 @@ const reverseFibonacci = function(length) {
   }
   return reverse(fibonacci);
 }
-    
+
 const sortArray = function(unsortedArray) {
   let sortedArray = [];
   for(let position = 0; position < unsortedArray.length; position++){
@@ -254,7 +254,7 @@ const rotate = function(array,index) {
   }
   return array;
 }
- 
+
 const partition = function(array,number) {
   let partition = [];
   partition[0] = numbersBelow(array,number);
@@ -289,7 +289,7 @@ exports.findGreatest = findGreatest;
 exports.swapElements = swapElements;
 exports.sortArray = sortArray;
 exports.reverseFibonacci = reverseFibonacci;
-exports.selectSecond = selectSecond;
+exports.selectEverySecondNo = selectEverySecondNo;
 exports.reverse = reverse;
 exports.addNumbers = addNumbers;
 exports.selectEven = selectEven;

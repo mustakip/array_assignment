@@ -80,8 +80,7 @@ const findLength = function(inputElements) {
 }
 
 const countEvenNumbers = function(inputNumbers) {
-  evenArray = selectEvenNumbers(inputNumbers);
-  return evenArray.length;
+  return selectEvenNumbers(inputNumbers).length;
 }
 
 const countOddNumbers = function(inputNumbers) {

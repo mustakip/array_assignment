@@ -84,8 +84,7 @@ const countEvenNumbers = function(inputNumbers) {
 }
 
 const countOddNumbers = function(inputNumbers) {
-  oddArray = selectOddNumbers(inputNumbers);
-  return oddArray.length;
+  return selectOddNumbers(inputNumbers).length;
 }
 
 const countNumbersAbove = function(inputNumbers,threshold) {

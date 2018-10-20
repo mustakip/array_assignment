@@ -68,8 +68,7 @@ const findGreatestNumber = function(inputNumbers) {
 }
 
 const findSmallestNumber = function(inputNumbers) {
-  sort(inputNumbers);
-  return inputNumbers[0];
+ return (sort(inputNumbers))[0];
 }
 
 const findAverage = function(inputNumbers) {

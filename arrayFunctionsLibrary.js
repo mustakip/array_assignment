@@ -1,11 +1,5 @@
 const selectOddNumbers =function(inputNumbers) {
-  let selectedOdd = [];
-  for(let number of inputNumbers) {
-    if(number % 2 != 0){
-      selectedOdd.push(number);
-    }
-  }
-  return  selectedOdd;
+  return inputNumbers.filter(function(number) {return number % 2 != 0});
 }
 
 const selectEvenNumbers = function(inputNumbers) {

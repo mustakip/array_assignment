@@ -88,8 +88,11 @@ const countOddNumbers = function(inputNumbers) {
 }
 
 const countNumbersAbove = function(inputNumbers,threshold) {
-  let aboveNumbers = numbersAbove(inputNumbers,threshold);
-  return  aboveNumbers.length;
+  return numbersAbove(inputNumbers,threshold).length;
+} 
+
+const isGreaterThan = function(number,threshold) {
+  return number > threshold;
 }
 
 const numbersAbove = function(inputNumbers,threshold) {

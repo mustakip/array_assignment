@@ -75,12 +75,8 @@ const findAverage = function(inputNumbers) {
   return addNumbers(inputNumbers)/inputNumbers.length;
 }
 
-const findLength = function(inputNumbers) {
-  lengthArray = [];
-  for(index = 0;index < inputNumbers.length;index++) {
-    lengthArray[index] = inputNumbers[index].length;
-  }
-  return lengthArray;
+const findLength = function(inputElements) {
+  return inputElements.map(function(element){return element.length});
 }
 
 const countEvenNumbers = function(inputNumbers) {

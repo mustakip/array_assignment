@@ -3,13 +3,7 @@ const selectOddNumbers =function(inputNumbers) {
 }
 
 const selectEvenNumbers = function(inputNumbers) {
-  let selectedEven = [];
-  for(let number of inputNumbers) {
-    if(number % 2 == 0){
-      selectedEven.push(number);
-    }
-  }
-  return  selectedEven;
+  return inputNumbers.filter(function(number) {return number % 2 == 0});
 }
 
 const addNumbers = function(inputNumbers) {

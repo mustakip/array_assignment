@@ -97,7 +97,10 @@ const isGreaterThan = function(number,threshold) {
 
 const numbersAbove = function(inputNumbers,threshold) {
   //let above = inputNumbers.filter(a => a > threshold);
-  let above = inputNumbers.filter(function(number) {return number > threshold;});
+  const greater = function(number) {
+    return isGreaterThan(number,threshold);
+  }
+  let above = inputNumbers.filter(greater);
   return above;
 }
 

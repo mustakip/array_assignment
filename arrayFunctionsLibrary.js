@@ -7,19 +7,19 @@ const isOdd = function(number) {
 } 
 
 const selectOddNumbers =function(inputNumbers) {
-  return inputNumbers.filter(function(number) {return number % 2 != 0});
+  return inputNumbers.filter(isOdd);
 }
 
 const selectEvenNumbers = function(inputNumbers) {
-  return inputNumbers.filter(function(number) {return number % 2 == 0});
+  return inputNumbers.filter(isEven);
+}
+
+const add = function(number1,number2) {
+  return number1 + number2;
 }
 
 const addNumbers = function(inputNumbers) {
-  let sum = 0;
-  for(number of inputNumbers) {
-    sum = sum + number;
-  }
-  return sum;
+  return inputNumbers.reduce(add);
 }
 
 const reverse = function(inputNumbers) {

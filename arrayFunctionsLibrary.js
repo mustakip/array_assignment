@@ -137,11 +137,7 @@ const countNumbersBelow = function(inputNumbers,threshold) {
 }
 
 const reverseArray = function(inputNumbers) {
-  let reversedArray = [];
-  for(let index = 0;index < inputNumbers.length;index++) {
-    reversedArray[index] = inputNumbers[inputNumbers.length - 1 - index];
-  }
-  return reversedArray;
+  return inputNumbers.reduce(reverseConcat);
 }
 
 const findIndex = function(inputNumbers,number) {
@@ -179,46 +175,33 @@ const extractDigits = function(input) {
   return inputNumbers;
 }
 
-const selectUniqueElements = function(inputNumbers) {
-  let uniqueArray = [];
-  for(element of inputNumbers) {
-    if(!uniqueArray.includes(element)) {
-      uniqueArray.push(element);
-    }
+const selectUnique = function(initialValue,currentValue) {
+  if(! initialValue.includes(currentValue)){
+    initialValue.push(currentValue);
+    return initialValue;
   }
-  return uniqueArray;
+  return initialValue;
+}
+
+const selectUniqueElements = function(inputNumbers) {
+  return inputNumbers.reduce(selectUnique,[]);
 }
 
 const selectUnion = function(array1,array2) {
-  let uniqueArray = selectUniqueElements(array1);
-  for(element of array2) {
-    if(!uniqueArray.includes(element)) {
-      uniqueArray.push(element);
-    }
-  }
-  return uniqueArray;
+  let combinedArray = array1.concat(array2);
+  return selectUniqueElements(combinedArray);
 }
 
 const intersect = function(array1,array2) {
-  let uniqueArray = selectUniqueElements(array2);
-  let intersection = [];
-  for(element of uniqueArray) {
-    if(array1.includes(element)) {
-      intersection.push(element);
-    }
-  }
-  return intersection;
+  let intersection = array2.reduce(function(initial,current) {if(array1.includes(current))
+    {return initial.concat(current);}return initial;},[]);
+  return selectUniqueElements(intersection);
 }
 
 const differ = function(array1,array2) {
-  let uniqueArray = selectUniqueElements(array1);
-  let intersection = [];
-  for(element of uniqueArray) {
-    if(!array2.includes(element)) {
-      intersection.push(element);
-    }
-  }
-  return intersection;
+  let differArray2 = array1.reduce(function(initial,current) {if(!array2.includes(current))
+    {return initial.concat(current);}return initial;},[]);
+  return differArray2;
 }
 
 const isSubset = function(array1,array2) {

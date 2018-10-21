@@ -1,3 +1,11 @@
+const isEven = function(number) {
+  return number % 2 == 0;
+}
+
+const isOdd = function(number) {
+  return number % 2 != 0;
+} 
+
 const selectOddNumbers =function(inputNumbers) {
   return inputNumbers.filter(function(number) {return number % 2 != 0});
 }

@@ -30,13 +30,17 @@ const reverse = function(inputNumbers) {
   return inputNumbers.reduce(reverseConcat,[]);
 }
 
-const selectEverySecondNo = function(inputNumbers) {
-  let selectedNumberArray = [];
-  for(index = 1 ; index < inputNumbers.length ; index += 2) {
-    selectedNumberArray.push(inputNumbers[index]);
+const concatEverySecondNo = function(initialValue,currentValue,index) {
+  if(index % 2 != 0) {
+    return initialValue.concat(currentValue);
   }
-  return selectedNumberArray;
+  return initialValue;
 }
+
+const selectEverySecondNo = function(inputNumbers) {
+  return inputNumbers.reduce(concatEverySecondNo,[]);
+}
+
 const reverseFibonacci = function(length) {
   let fibonacci = [];
   let firstElement = 0;
@@ -83,8 +87,12 @@ const findAverage = function(inputNumbers) {
   return addNumbers(inputNumbers)/inputNumbers.length;
 }
 
+const extractLength = function(element) {
+  return element.length;
+}
+
 const findLength = function(inputElements) {
-  return inputElements.map(function(element){return element.length});
+  return inputElements.map(extractLength);
 }
 
 const countEvenNumbers = function(inputNumbers) {
@@ -111,8 +119,15 @@ const numbersAbove = function(inputNumbers,threshold) {
   return above;
 }
 
+const isLesserThan = function(number,threshold) {
+  return number < threshold;
+}
+
 const numbersBelow = function(inputNumbers,threshold) {
-  let below = inputNumbers.filter(number => number < threshold);
+  const lesser = function(number) {
+    return isLesserThan(number,threshold);
+  }
+  let below = inputNumbers.filter(lesser);
   return below;
 }
 

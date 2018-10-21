@@ -22,12 +22,12 @@ const addNumbers = function(inputNumbers) {
   return inputNumbers.reduce(add);
 }
 
+const reverseConcat = function(initialValue,currentValue) {
+  return [currentValue].concat(initialValue);
+}
+
 const reverse = function(inputNumbers) {
-  let reversedArray = [];
-  for(let index = 0;index < inputNumbers.length;index++) {
-    reversedArray[index] = inputNumbers[inputNumbers.length - 1 - index];
-  }
-  return reversedArray;
+  return inputNumbers.reduce(reverseConcat,[]);
 }
 
 const selectEverySecondNo = function(inputNumbers) {

@@ -30,15 +30,17 @@ const reverse = function(inputNumbers) {
   return inputNumbers.reduce(reverseConcat,[]);
 }
 
-const concatEverySecondNo = function(initialValue,currentValue,index) {
+const concatEverySecondNo = function(initial,current) {
+  let {index,elements} = initial;
+  let newElements = elements;
   if(index % 2 != 0) {
-    return initialValue.concat(currentValue);
+    newElements = newElements.concat(current);
   }
-  return initialValue;
+  return {index : index + 1, elements : newElements};
 }
 
 const selectEverySecondNo = function(inputNumbers) {
-  return inputNumbers.reduce(concatEverySecondNo,[]);
+  return inputNumbers.reduce(concatEverySecondNo,{index : 0 ,elements : []}).elements;
 }
 
 const reverseFibonacci = function(length) {

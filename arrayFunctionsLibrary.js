@@ -196,13 +196,12 @@ const selectUnion = function(array1,array2) {
   return selectUniqueElements(combinedArray);
 }
 
-const intersect = function(array1,array2) {
-  let intersection = array2.reduce(function(initial,current) {
-    if(array1.includes(current)) {
+const intersect = function(set1,set2) {
+  return  set2.reduce(function(initial,current) {
+    if(set1.includes(current)) {
       return initial.concat(current);
     }
     return initial;},[]);
-  return intersection;
 }
 
 const differ = function(array1,array2) {

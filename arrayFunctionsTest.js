@@ -152,10 +152,10 @@ assert.deepEqual(lib.differ([1,2,3,2,4,4,30,5],[1,4,2,30,4,50]),[3,5]);
 assert.deepEqual(lib.differ([-1,-4,-1,7,6,9,9,0],[7,-5,8,-1,4,9,3]),[-4,6,0]);
 
 // 24. Is Subset.
-assert.deepEqual(lib.isSubset([1,2],[1]),"Yes");
-assert.deepEqual(lib.isSubset([1,2,],[1,]),"Yes");
-assert.deepEqual(lib.isSubset([2,5,7,3,1],[2,1,1]),"No");
-assert.deepEqual(lib.isSubset([1,2,5,7,3,1],[2,1,1]),"Yes");
+assert.deepEqual(lib.isSubset([1,2],[1]),true);
+assert.deepEqual(lib.isSubset([1,2,],[1,]),true);
+assert.deepEqual(lib.isSubset([2,5,7,3,1],[2,1,8,1]),false);
+assert.deepEqual(lib.isSubset([1,2,5,7,3,1],[2,1,1]),true);
 
 // 25. Zip.
 assert.deepEqual(lib.zip([1,2],[1]),[[1,1]]);

@@ -201,20 +201,17 @@ const intersect = function(array1,array2) {
 }
 
 const differ = function(array1,array2) {
-  let differArray2 = array1.reduce(function(initial,current) {if(!array2.includes(current))
-    {return initial.concat(current);}return initial;},[]);
+  let differArray2 = array1.reduce(function(initial,current) {
+    if(!array2.includes(current)) {
+      return initial.concat(current);
+    }
+    return initial;},[]);
   return differArray2;
 }
 
 const isSubset = function(array1,array2) {
-  for(element of array2) {
-    if(!array1.includes(element)) {
-      return "No";
-    }
-    let index = array1.indexOf(element);
-    array1.splice(index,1);
-  }
-  return "Yes"
+ let msg = array2.every(function(number){return array1.includes(number)});
+  return msg;
 }
 
 const findshorter = function(array1,array2) {

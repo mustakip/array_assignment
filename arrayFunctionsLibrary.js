@@ -150,22 +150,28 @@ const findIndex = function(inputNumbers,number) {
   }
 }
 
-const isAscending = function(inputNumbers) { 
-  for(let index = 0; index < inputNumbers.length; index++) {
-    if(inputNumbers[index] > inputNumbers[index+1]){
-      return "No";
-    }
+const checkGreater = function(initial,current) {
+  let {number,state} = initial;
+  if(current >= number && state){
+    return {number : current, state : true };
   }
-  return "Yes";
+  return {number : initial.number,state : false}
+}
+
+const isAscending = function(inputNumbers) { 
+  return inputNumbers.reduce(checkGreater,{number : inputNumbers[0],state : true}).state;
+}
+
+const checkLesser = function(initial,current) {
+  let {number,state} = initial;
+  if(current <= number && state){
+    return {number : current, state : true };
+  }
+  return {number : initial.number,state : false}
 }
 
 const isDescending = function(inputNumbers) {
-  for(let index = 0; index < inputNumbers.length; index++) {
-    if(inputNumbers[index] < inputNumbers[index+1]){
-      return "No"
-    }
-  }
-  return "Yes";
+  return inputNumbers.reduce(checkLesser,{number : inputNumbers[0],state : true}).state;
 }
 
 const extractDigits = function(input) {

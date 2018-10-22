@@ -110,16 +110,16 @@ testAssertion(lib.findIndex,[56,78,93,103],3,103);
 testAssertion(lib.findIndex,[2,3,4,7,8,9,6,7,3,2,60,78,674],undefined,61);
 
 // 17. check ascending order.
-testAssertion(lib.isAscending,[21,34,6],"No");
-testAssertion(lib.isAscending,[23,54,57,98],"Yes");
-testAssertion(lib.isAscending,[56,78,93,103],"Yes");
-testAssertion(lib.isAscending,[2,3,4,7,8,9,6,7,3,2,60,78,674],"No");
+testAssertion(lib.isAscending,[21,34,6],false);
+testAssertion(lib.isAscending,[23,54,57,98],true);
+testAssertion(lib.isAscending,[56,78,93,103],true);
+testAssertion(lib.isAscending,[2,3,4,7,8,9,6,7,3,2,60,78,674],false);
 
 // 18. check descending order.
-testAssertion(lib.isDescending,[34,21,6],"Yes");
-testAssertion(lib.isDescending,[23,57,98,54],"No");
-testAssertion(lib.isDescending,[56,78,93,103],"No");
-testAssertion(lib.isDescending,[674,78,60,9,8,7,7,6,4,3,3,2,2],"Yes");
+testAssertion(lib.isDescending,[34,21,6],true);
+testAssertion(lib.isDescending,[23,57,98,54],false);
+testAssertion(lib.isDescending,[56,78,93,103],false);
+testAssertion(lib.isDescending,[674,78,60,9,8,7,7,6,4,3,3,2,2],true);
 
 // 19. Extract digits.
 assert.deepEqual(lib.extractDigits(0),[0]);

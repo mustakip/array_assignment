@@ -197,11 +197,11 @@ const selectUnion = function(array1,array2) {
 }
 
 const intersect = function(set1,set2) {
-  return  set2.reduce(function(initial,current) {
+  return  set2.reduce(function(previous,current) {
     if(set1.includes(current)) {
-      return initial.concat(current);
+      return previous.concat(current);
     }
-    return initial;},[]);
+    return previous;},[]);
 }
 
 const differ = function(array1,array2) {

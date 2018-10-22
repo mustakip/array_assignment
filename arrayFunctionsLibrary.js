@@ -175,12 +175,8 @@ const isDescending = function(inputNumbers) {
 }
 
 const extractDigits = function(input) {
-  let number = ""+input;
-  let inputNumbers = [];
-  for(let index = 0; index < number.length; index++) {
-    inputNumbers[index] = +number[index];
-  }
-  return inputNumbers;
+  let text = ""+input;
+  return text.split("");
 }
 
 const selectUnique = function(initialValue,currentValue) {

@@ -197,8 +197,11 @@ const selectUnion = function(array1,array2) {
 }
 
 const intersect = function(array1,array2) {
-  let intersection = array2.reduce(function(initial,current) {if(array1.includes(current))
-    {return initial.concat(current);}return initial;},[]);
+  let intersection = array2.reduce(function(initial,current) {
+    if(array1.includes(current)) {
+      return initial.concat(current);
+    }
+    return initial;},[]);
   return selectUniqueElements(intersection);
 }
 

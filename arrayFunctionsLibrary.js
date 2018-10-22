@@ -197,11 +197,11 @@ const selectUnion = function(array1,array2) {
 }
 
 const intersect = function(set1,set2) {
-  const selectIntersection = function(previous,current) {
-    if(set1.includes(current)) {
-      return previous.concat(current);
+  const selectIntersection = function(setOfIntersection,currentElement) {
+    if(set1.includes(currentElement)) {
+      return setOfIntersection.concat(currentElement);
     }
-    return previous;
+    return setOfIntersection;
   }
   return set2.reduce(selectIntersection,[]);
 }

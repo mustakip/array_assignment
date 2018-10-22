@@ -202,7 +202,7 @@ const intersect = function(array1,array2) {
       return initial.concat(current);
     }
     return initial;},[]);
-  return selectUniqueElements(intersection);
+  return intersection;
 }
 
 const differ = function(array1,array2) {

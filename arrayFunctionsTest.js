@@ -142,8 +142,8 @@ assert.deepEqual(lib.selectUnion([-1,-4,-1,7,6,9,9,0],[7,-5,6,8,4,9,3]),[-1,-4,7
 // 22. intersection.
 assert.deepEqual(lib.intersect([0],[0]),[0]);
 assert.deepEqual(lib.intersect([6,5],[6,5]),[6,5]);
-assert.deepEqual(lib.intersect([1,2,3,2,4,4,30,5],[1,4,2,30,4,50]),[1,4,2,30]);
-assert.deepEqual(lib.intersect([-1,-4,-1,7,6,9,9,0],[7,-5,6,8,-1,4,9,3]),[7,6,-1,9]);
+assert.deepEqual(lib.intersect([1,2,3,4,30,5],[1,4,2,30,50]),[1,4,2,30]);
+assert.deepEqual(lib.intersect([-1,-4,7,6,9,0],[7,-5,6,8,-1,4,9,3]),[7,6,-1,9]);
 
 // 23. Difference.
 assert.deepEqual(lib.differ([0],[0]),[]);

@@ -108,27 +108,25 @@ const countOddNumbers = function(inputNumbers) {
 const countNumbersAbove = function(inputNumbers,threshold) {
   return selectNumbersAbove(inputNumbers,threshold).length;
 } 
-const greater = function(threshold) {
+const isGreaterThan = function(threshold) {
   return function(number) {
     return number > threshold;
   }
 }
 
 const selectNumbersAbove = function(inputNumbers,threshold) {
-  let numbersAbove = inputNumbers.filter(greater(threshold));
+  let numbersAbove = inputNumbers.filter(isGreaterThan(threshold));
   return numbersAbove;
 }
 
-const isLesserThan = function(number,threshold) {
-  return number < threshold;
+const isLesserThan = function(threshold) {
+  return function(number) {
+    return number < threshold;
+  }
 }
 
 const selectNumbersBelow = function(inputNumbers,threshold) {
-  const lesser = function(number) {
-    return isLesserThan(number,threshold);
-  }
-  let numbersBelow = inputNumbers.filter(lesser);
-  return numbersBelow;
+  return inputNumbers.filter(isLesserThan(threshold));
 }
 
 const countNumbersBelow = function(inputNumbers,threshold) {

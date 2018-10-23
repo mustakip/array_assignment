@@ -106,35 +106,35 @@ const countOddNumbers = function(inputNumbers) {
 }
 
 const countNumbersAbove = function(inputNumbers,threshold) {
-  return numbersAbove(inputNumbers,threshold).length;
+  return selectNumbersAbove(inputNumbers,threshold).length;
 } 
 
 const isGreaterThan = function(number,threshold) {
   return number > threshold;
 }
 
-const numbersAbove = function(inputNumbers,threshold) {
+const selectNumbersAbove = function(inputNumbers,threshold) {
   const greater = function(number) {
     return isGreaterThan(number,threshold);
   }
-  let above = inputNumbers.filter(greater);
-  return above;
+  let numbersAbove = inputNumbers.filter(greater);
+  return numbersAbove;
 }
 
 const isLesserThan = function(number,threshold) {
   return number < threshold;
 }
 
-const numbersBelow = function(inputNumbers,threshold) {
+const selectNumbersBelow = function(inputNumbers,threshold) {
   const lesser = function(number) {
     return isLesserThan(number,threshold);
   }
-  let below = inputNumbers.filter(lesser);
-  return below;
+  let numbersBelow = inputNumbers.filter(lesser);
+  return numbersBelow;
 }
 
 const countNumbersBelow = function(inputNumbers,threshold) {
-  let belowNumbers = numbersBelow(inputNumbers,threshold);
+  let belowNumbers = selectNumbersBelow(inputNumbers,threshold);
   return  belowNumbers.length;
 }
 
@@ -196,14 +196,34 @@ const selectUnion = function(array1,array2) {
   return selectUniqueElements(combinedArray);
 }
 
-const intersect = function(set1,set2) {
-  const selectIntersection = function(setOfIntersection,currentElement) {
-    if(set1.includes(currentElement)) {
-      return setOfIntersection.concat(currentElement);
-    }
-    return setOfIntersection;
+
+//const sum = function(a,b) { return a + b }
+//
+//const add2 = function(number) { return sum(number,2) }
+//const add3 = function(number) { return sum(number,3) }
+//
+//sum(2)(10)
+//////////////////////////////////
+//
+//const sum = function(a) { return function(b) {return a + b}  }
+//sum(2)(10)
+//
+//const add2 = sum(2)
+//const add3 = sum(3)
+//
+
+const selectElementIfCommon = function(selectionSoFar,currentElement,set1) {
+  if(set1.includes(currentElement)) {
+    return selectionSoFar.concat(currentElement);
   }
-  return set2.reduce(selectIntersection,[]);
+  return selectionSoFar;
+}
+
+const intersect = function(set1,set2) {   
+  const intersection = function(selectionSoFar,currentElement) {
+    return selectElementIfCommon(selectionSoFar,currentElement,set1);
+  }
+  return set2.reduce(intersection,[]);
 }
 
 const differ = function(array1,array2) {
@@ -256,9 +276,9 @@ const rotate = function(array,index) {
 
 const partition = function(array,number) {
   let partition = [];
-  partition[0] = numbersBelow(array,number);
+  partition[0] = selectNumbersBelow(array,number);
   partition[0].push(number);
-  partition[1] = numbersAbove(array,number);
+  partition[1] = selectNumbersAbove(array,number);
   return partition;
 }
 

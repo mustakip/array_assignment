@@ -218,9 +218,14 @@ const differ = function(array1,array2) {
   return array1.reduce(differentiate(array2),[]);
 }
 
+const isPresent = function(array1) {
+  return function(number) {
+    return array1.includes(number);
+  }
+}
+
 const isSubset = function(array1,array2) {
- let msg = array2.every(function(number){return array1.includes(number)});
-  return msg;
+ return array2.every(isPresent(array1));
 }
 
 const findshorter = function(array1,array2) {

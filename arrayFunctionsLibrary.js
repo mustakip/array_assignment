@@ -192,18 +192,17 @@ const selectUnion = function(array1,array2) {
   return selectUniqueElements(combinedArray);
 }
 
-const selectElementIfCommon = function (selectionSoFar,currentElement,set1) {
-  if(set1.includes(currentElement)) {
-    return selectionSoFar.concat(currentElement);
+const selectElementIfCommon = function (set1) {
+  return function(selectionSoFar,currentElement) {
+    if(set1.includes(currentElement)) {
+      return selectionSoFar.concat(currentElement);
+    }
+    return selectionSoFar;
   }
-  return selectionSoFar;
 }
 
 const intersect = function(set1,set2) {   
-  const intersection = function(selectionSoFar,currentElement) {
-    return selectElementIfCommon(selectionSoFar,currentElement,set1);
-  }
-  return set2.reduce(intersection,[]);
+  return set2.reduce(selectElementIfCommon(set1),[]);
 }
 
 const differ = function(array1,array2) {

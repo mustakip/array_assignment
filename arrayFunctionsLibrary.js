@@ -146,24 +146,24 @@ const findIndex = function(inputNumbers,number) {
   }
 }
 
-const checkGreater = function(initial,current) {
-  let {number,state} = initial;
-  if(current >= number && state){
-    return {number : current, state : true };
+const checkGreater = function(previousState,currentValue) {
+  let {number,state} = previousState;
+  if(currentValue >= number && state){
+    return {number : currentValue, state : true };
   }
-  return {number : initial.number,state : false}
-}
+  return {number : currentValue, state : false}
+};
 
 const isAscending = function(inputNumbers) { 
   return inputNumbers.reduce(checkGreater,{number : inputNumbers[0],state : true}).state;
 }
 
-const checkLesser = function(initial,current) {
-  let {number,state} = initial;
-  if(current <= number && state){
-    return {number : current, state : true };
+const checkLesser = function(previousState,currentValue) {
+  let {number,state} = previousState;
+  if(currentValue <= number && state){
+    return {number : currentValue, state : true };
   }
-  return {number : initial.number,state : false}
+  return {number : previousState.number,state : false}
 }
 
 const isDescending = function(inputNumbers) {
@@ -247,7 +247,8 @@ const findLongest = function(array1,array2) {
 const zipWith = function(longArray) {
   return function(zippedSoFar,currentElement) {
     let {index,zipArray} = zippedSoFar;
-    return{index : index + 1, zipArray : zipArray.concat([[currentElement,longArray[index]]])};
+    let concatedArray = zipArray.concat([[currentElement,longArray[index]]]);
+    return{index : index + 1, zipArray : concatedArray};
   }
 }
 
@@ -258,11 +259,10 @@ const zip = function(array1,array2) {
 }
 
 const rotate = function(array,index) {
-  for(let post = 0; post < index; post++) {
-    array.push(array[0]);
-    array.shift();
-  }
-  return array;
+  let firstPart = array.slice(0,index);
+  let secondPart = array.slice(index);
+  let rotatedArray = secondPart.concat(firstPart);
+  return rotatedArray;
 }
 
 const partition = function(array,number) {

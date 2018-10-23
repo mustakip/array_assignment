@@ -108,16 +108,14 @@ const countOddNumbers = function(inputNumbers) {
 const countNumbersAbove = function(inputNumbers,threshold) {
   return selectNumbersAbove(inputNumbers,threshold).length;
 } 
-
-const isGreaterThan = function(number,threshold) {
-  return number > threshold;
+const greater = function(threshold) {
+  return function(number) {
+    return number > threshold;
+  }
 }
 
 const selectNumbersAbove = function(inputNumbers,threshold) {
-  const greater = function(number) {
-    return isGreaterThan(number,threshold);
-  }
-  let numbersAbove = inputNumbers.filter(greater);
+  let numbersAbove = inputNumbers.filter(greater(threshold));
   return numbersAbove;
 }
 
@@ -196,23 +194,7 @@ const selectUnion = function(array1,array2) {
   return selectUniqueElements(combinedArray);
 }
 
-
-//const sum = function(a,b) { return a + b }
-//
-//const add2 = function(number) { return sum(number,2) }
-//const add3 = function(number) { return sum(number,3) }
-//
-//sum(2)(10)
-//////////////////////////////////
-//
-//const sum = function(a) { return function(b) {return a + b}  }
-//sum(2)(10)
-//
-//const add2 = sum(2)
-//const add3 = sum(3)
-//
-
-const selectElementIfCommon = function(selectionSoFar,currentElement,set1) {
+const selectElementIfCommon = function (selectionSoFar,currentElement,set1) {
   if(set1.includes(currentElement)) {
     return selectionSoFar.concat(currentElement);
   }
@@ -260,10 +242,11 @@ const zip = function(array1,array2) {
   let shortArray = findshorter(array1,array2);
   let longArray = findLongest(array1,array2); 
   let zipArray = [];
-  for(let index = 0; index < shortArray.length; index++) {
-    zipArray[index] = [shortArray[index],longArray[index]];
-  }
-  return zipArray;
+  let zippedArray =  shortArray.reduce(function(zippedSoFar,currentElement){
+    let {index,zipArray} = zippedSoFar;
+    return {index : index + 1,zipArray : zipArray.concat([[currentElement,longArray[index]]])}
+  },{index :0,zipArray :[]}).zipArray;
+  return zippedArray;
 }
 
 const rotate = function(array,index) {

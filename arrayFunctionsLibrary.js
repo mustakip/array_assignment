@@ -57,32 +57,20 @@ const reverseFibonacci = function(length) {
   return reverse(fibonacci);
 }
 
-const sort = function(unsortedArray) {
-  let sortedArray = [];
-  for(let position = 0; position < unsortedArray.length; position++){
-    sortedArray = swapElements(unsortedArray);
-  }
-  return sortedArray;
-}
-
-const swapElements = function(unsortedArray) {
-  for(let index = 0; index < unsortedArray.length; index++) {
-    if(unsortedArray[index] >unsortedArray[index + 1]) {
-      let stack = unsortedArray[index];
-      unsortedArray[index] = unsortedArray[index + 1];
-      unsortedArray[index + 1] = stack;
-    }
-  }
-  return unsortedArray;
+const findGreater = function(previousElement,currentElement) {
+  return Math.max(previousElement,currentElement);
 }
 
 const findGreatestNumber = function(inputNumbers) {
-  sort(inputNumbers);
-  return inputNumbers[inputNumbers.length - 1];
+  return inputNumbers.reduce(findGreater);
+}
+
+const findSmaller = function(previousElement,currentElement) {
+  return Math.min(previousElement,currentElement);
 }
 
 const findSmallestNumber = function(inputNumbers) {
- return (sort(inputNumbers))[0];
+ return inputNumbers.reduce(findSmaller); 
 }
 
 const findAverage = function(inputNumbers) {
@@ -281,7 +269,6 @@ exports.reverse = reverse;
 exports.countOddNumbers = countOddNumbers;
 exports.countEvenNumbers = countEvenNumbers;
 exports.selectOddNumbers = selectOddNumbers;
-exports.sort = sort;
 exports.partition = partition;
 exports.intersect = intersect;
 exports.findIndex = findIndex;
@@ -295,7 +282,6 @@ exports.isSubset = isSubset;
 exports.selectUnion = selectUnion;
 exports.extractDigits = extractDigits;
 exports.findGreatestNumber = findGreatestNumber;
-exports.swapElements = swapElements;
 exports.reverseArray = reverseArray;
 exports.selectUniqueElements = selectUniqueElements;
 exports.isAscending = isAscending;

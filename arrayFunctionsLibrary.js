@@ -205,13 +205,17 @@ const intersect = function(set1,set2) {
   return set2.reduce(selectElementIfCommon(set1),[]);
 }
 
-const differ = function(array1,array2) {
-  let differArray2 = array1.reduce(function(initial,current) {
-    if(!array2.includes(current)) {
-      return initial.concat(current);
+const differentiate = function(array2) {
+  return function(differentiationSoFar,currentElement) {
+    if(!array2.includes(currentElement)) {
+      return differentiationSoFar.concat(currentElement);
     }
-    return initial;},[]);
-  return differArray2;
+    return differentiationSoFar;
+  }
+}
+
+const differ = function(array1,array2) {
+  return array1.reduce(differentiate(array2),[]);
 }
 
 const isSubset = function(array1,array2) {
@@ -235,15 +239,17 @@ const findLongest = function(array1,array2) {
   return longArray;
 }
 
+const zipWith = function(longArray) {
+  return function(zippedSoFar,currentElement) {
+    let {index,zipArray} = zippedSoFar;
+    return{index : index + 1, zipArray : zipArray.concat([[currentElement,longArray[index]]])};
+  }
+}
+
 const zip = function(array1,array2) {
   let shortArray = findshorter(array1,array2);
   let longArray = findLongest(array1,array2); 
-  let zipArray = [];
-  let zippedArray =  shortArray.reduce(function(zippedSoFar,currentElement){
-    let {index,zipArray} = zippedSoFar;
-    return {index : index + 1,zipArray : zipArray.concat([[currentElement,longArray[index]]])}
-  },{index :0,zipArray :[]}).zipArray;
-  return zippedArray;
+  return  shortArray.reduce(zipWith(longArray),{index :0,zipArray :[]}).zipArray;
 }
 
 const rotate = function(array,index) {

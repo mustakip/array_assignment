@@ -1,178 +1,299 @@
 const assert = require("assert");
-const lib = require("./arrayFunctionsLibrary.js"); 
-const testAssertion = function(func,input,expectedOutput,secondInput) { 
-  return assert.deepEqual(func(input,secondInput),expectedOutput);
+const arrayLib = require("./arrayFunctionsLibrary.js"); 
+
+const {selectOddNumbers, selectEvenNumbers} = arrayLib;
+const {addNumbers, reverse} = arrayLib;
+const {selectEverySecondNo,reverseFibonacci} = arrayLib;
+const {findGreatestNumber,findSmallestNumber} = arrayLib;
+const {findAverage,findLength} = arrayLib;
+const {countEvenNumbers, countOddNumbers} = arrayLib;
+const {countNumbersAbove, countNumbersBelow} = arrayLib;
+const {reverseArray, findIndex} = arrayLib;
+const {isAscending,isDescending} = arrayLib;
+const {selectUnion, selectUniqueElements} = arrayLib;
+const {intersect, extractDigits} = arrayLib;
+const {differ, isSubset} = arrayLib;
+const {zip, rotate} = arrayLib;
+const {partition} = arrayLib;
+//------------------------------------------------------------------------------------------------------//
+const testSelectOddNumbers = function(input,expectedOutput) { 
+  return assert.deepEqual(selectOddNumbers(input),expectedOutput);
 }
 
 // 1. selecting odd number.
-testAssertion(lib.selectOddNumbers,[-2,-1,0],[-1]);
-testAssertion(lib.selectOddNumbers,[21,34,6],[21]);
-testAssertion(lib.selectOddNumbers,[23,57,98,54],[23,57]);
-testAssertion(lib.selectOddNumbers,[56,78,93,103],[93,103]);
-testAssertion(lib.selectOddNumbers,[2,3,4,7,8,9,6,7,3,2,60,78,674],[3,7,9,7,3]);
+testSelectOddNumbers([-2,-1,0],[-1]);
+testSelectOddNumbers([21,34,6],[21]);
+testSelectOddNumbers([23,57,98,54],[23,57]);
+testSelectOddNumbers([56,78,93,103],[93,103]);
+testSelectOddNumbers([2,3,4,7,8,9,6,7,3,2,60,78,674],[3,7,9,7,3]);
+//------------------------------------------------------------------------------------------------------//
+const testSelectEvenNumbers = function(input,expectedOutput) { 
+  return assert.deepEqual(selectEvenNumbers(input),expectedOutput);
+}
 
 // 2. selecting even number.
-testAssertion(lib.selectEvenNumbers,[-2,-1,0],[-2,0]);
-testAssertion(lib.selectEvenNumbers,[21,34,6],[34,6]);
-testAssertion(lib.selectEvenNumbers,[23,57,98,54],[98,54]);
-testAssertion(lib.selectEvenNumbers,[56,78,93,103],[56,78]);
-testAssertion(lib.selectEvenNumbers,[2,3,4,7,8,9,6,7,3,2,60,78,674],[2,4,8,6,2,60,78,674]);
+testSelectEvenNumbers([-2,-1,0],[-2,0]);
+testSelectEvenNumbers([21,34,6],[34,6]);
+testSelectEvenNumbers([23,57,98,54],[98,54]);
+testSelectEvenNumbers([56,78,93,103],[56,78]);
+testSelectEvenNumbers([2,3,4,7,8,9,6,7,3,2,60,78,674],[2,4,8,6,2,60,78,674]);
+//------------------------------------------------------------------------------------------------------//
+const testAddNumbers = function(input,expectedOutput) { 
+  return assert.deepEqual(addNumbers(input),expectedOutput);
+}
 
 // 3. sum of list of numbers.
-testAssertion(lib.addNumbers,[21,34,6],61);
-testAssertion(lib.addNumbers,[-2,-1,0],-3);
-testAssertion(lib.addNumbers,[23,57,98,54],232);
-testAssertion(lib.addNumbers,[56,78,93,103],330);
-testAssertion(lib.addNumbers,[2,3,4,7,8,9,6,7,3,2,60,78,674],863);
+testAddNumbers([21,34,6],61);
+testAddNumbers([-2,-1,0],-3);
+testAddNumbers([23,57,98,54],232);
+testAddNumbers([56,78,93,103],330);
+testAddNumbers([2,3,4,7,8,9,6,7,3,2,60,78,674],863);
+//------------------------------------------------------------------------------------------------------//
+const testReverse = function(input,expectedOutput) { 
+  return assert.deepEqual(reverse(input),expectedOutput);
+}
 
 // 4. printing reverse.
-testAssertion(lib.reverse,[21,34,6],[6,34,21]);
-testAssertion(lib.reverse,[-2,-1,0],[0,-1,-2]);
-testAssertion(lib.reverse,[23,57,98,54],[54,98,57,23]);
-testAssertion(lib.reverse,[56,78,93,103],[103,93,78,56]);
+testReverse([21,34,6],[6,34,21]);
+testReverse([-2,-1,0],[0,-1,-2]);
+testReverse([23,57,98,54],[54,98,57,23]);
+testReverse([56,78,93,103],[103,93,78,56]);
+//------------------------------------------------------------------------------------------------------//
+const testSelectEverySecondNo = function(input,expectedOutput) { 
+  return assert.deepEqual(selectEverySecondNo(input),expectedOutput);
+}
 
 // 5. selecting every second element. 
-testAssertion(lib.selectEverySecondNo,[21,34,6],[34]);
-testAssertion(lib.selectEverySecondNo,[-2,-1,0],[-1]);
-testAssertion(lib.selectEverySecondNo,[23,57,98,54],[57,54]);
-testAssertion(lib.selectEverySecondNo,[56,78,93,103],[78,103]);
-testAssertion(lib.selectEverySecondNo,[2,3,4,7,8,9,6,7,3,2,60,78,674],[3,7,9,7,2,78]);
-  
+testSelectEverySecondNo([21,34,6],[34]);
+testSelectEverySecondNo([-2,-1,0],[-1]);
+testSelectEverySecondNo([23,57,98,54],[57,54]);
+testSelectEverySecondNo([56,78,93,103],[78,103]);
+testSelectEverySecondNo([2,3,4,7,8,9,6,7,3,2,60,78,674],[3,7,9,7,2,78]);
+//------------------------------------------------------------------------------------------------------//
+const testReverseFibonacci = function(input,expectedOutput) { 
+  return assert.deepEqual(reverseFibonacci(input),expectedOutput);
+}
+
 // 6. reverse fibonacci.
-testAssertion(lib.reverseFibonacci,0,[]);
-testAssertion(lib.reverseFibonacci,1,[0]);
-testAssertion(lib.reverseFibonacci,2,[1,0]);
-testAssertion(lib.reverseFibonacci,5,[3,2,1,1,0]);
-testAssertion(lib.reverseFibonacci,10,[34,21,13,8,5,3,2,1,1,0]);
+testReverseFibonacci(0,[]);
+testReverseFibonacci(1,[0]);
+testReverseFibonacci(2,[1,0]);
+testReverseFibonacci(5,[3,2,1,1,0]);
+testReverseFibonacci(10,[34,21,13,8,5,3,2,1,1,0]);
+//------------------------------------------------------------------------------------------------------//
+const testFindGreatestNumber = function(input,expectedOutput) { 
+  return assert.deepEqual(findGreatestNumber(input),expectedOutput);
+}
 
 // 7. greatest numberin a list.
-testAssertion(lib.findGreatestNumber,[-2,-1,0],0);
-testAssertion(lib.findGreatestNumber,[21,34,6],34);
-testAssertion(lib.findGreatestNumber,[23,57,98,54],98);
-testAssertion(lib.findGreatestNumber,[56,78,93,103],103);
-testAssertion(lib.findGreatestNumber,[2,3,4,7,8,9,6,7,3,2,60,78,674],674);
+testFindGreatestNumber([-2,-1,0],0);
+testFindGreatestNumber([21,34,6],34);
+testFindGreatestNumber([23,57,98,54],98);
+testFindGreatestNumber([56,78,93,103],103);
+testFindGreatestNumber([2,3,4,7,8,9,6,7,3,2,60,78,674],674);
+//------------------------------------------------------------------------------------------------------//
+const testFindSmallestNumber = function(input,expectedOutput) { 
+return assert.deepEqual(findSmallestNumber(input),expectedOutput);
+}
 
 // 8. lowest number in a list.
-testAssertion(lib.findSmallestNumber,[21,34,6],6);
-testAssertion(lib.findSmallestNumber,[-2,-1,0],-2);
-testAssertion(lib.findSmallestNumber,[23,57,98,54],23);
-testAssertion(lib.findSmallestNumber,[56,78,93,103],56);
-testAssertion(lib.findSmallestNumber,[2,3,4,7,8,9,6,7,3,2,60,78,674],2);
+testFindSmallestNumber([21,34,6],6);
+testFindSmallestNumber([-2,-1,0],-2);
+testFindSmallestNumber([23,57,98,54],23);
+testFindSmallestNumber([56,78,93,103],56);
+testFindSmallestNumber([2,3,4,7,8,9,6,7,3,2,60,78,674],2);
+//------------------------------------------------------------------------------------------------------//
+const testAverage = function(input,expectedOutput) { 
+return assert.deepEqual(findAverage(input),expectedOutput);
+}
 
 // 9. find average of a list.
-testAssertion(lib.findAverage,[-2,-1,0],-1);
-testAssertion(lib.findAverage,[21,34,8],21);
-testAssertion(lib.findAverage,[23,57,98,54],58);
-testAssertion(lib.findAverage,[56,78,93,103],82.5);
+testAverage([-2,-1,0],-1);
+testAverage([21,34,8],21);
+testAverage([23,57,98,54],58);
+testAverage([56,78,93,103],82.5);
+//------------------------------------------------------------------------------------------------------//
+const testFindLength = function(input,expectedOutput) { 
+return assert.deepEqual(findLength(input),expectedOutput);
+}
 
 // 10. mapping lengths.
-testAssertion(lib.findLength,[""],[0]);
-testAssertion(lib.findLength,["annu"],[4]);
-testAssertion(lib.findLength,["leela","malliSir"],[5,8]);
-testAssertion(lib.findLength,["musta","afftab","sai","deepika"],[5,6,3,7]);
+testFindLength([""],[0]);
+testFindLength(["annu"],[4]);
+testFindLength(["leela","malliSir"],[5,8]);
+testFindLength(["musta","afftab","sai","deepika"],[5,6,3,7]);
+//------------------------------------------------------------------------------------------------------//
+const testCountOddNumbers = function(input,expectedOutput) { 
+return assert.deepEqual(countOddNumbers(input),expectedOutput);
+}
 
 // 11. counting odd numbers.
-testAssertion(lib.countOddNumbers,[21,34,6],1);
-testAssertion(lib.countOddNumbers,[-2,-1,0],1);
-testAssertion(lib.countOddNumbers,[23,57,98,54],2);
-testAssertion(lib.countOddNumbers,[56,78,93,103],2);
-testAssertion(lib.countOddNumbers,[2,3,4,7,8,9,6,7,3,2,60,78,674],5);
+testCountOddNumbers([21,34,6],1);
+testCountOddNumbers([-2,-1,0],1);
+testCountOddNumbers([23,57,98,54],2);
+testCountOddNumbers([56,78,93,103],2);
+testCountOddNumbers([2,3,4,7,8,9,6,7,3,2,60,78,674],5);
+//------------------------------------------------------------------------------------------------------//
+const testCountEvenNumbers = function(input,expectedOutput) { 
+return assert.deepEqual(countEvenNumbers(input),expectedOutput);
+}
 
 // 12. counting even numbers.
-testAssertion(lib.countEvenNumbers,[21,34,6],2);
-testAssertion(lib.countEvenNumbers,[-2,-1,0],2);
-testAssertion(lib.countEvenNumbers,[23,57,98,54],2);
-testAssertion(lib.countEvenNumbers,[56,78,93,103],2);
-testAssertion(lib.countEvenNumbers,[2,3,4,7,8,9,6,7,3,2,60,78,674],8);
+testCountEvenNumbers([21,34,6],2);
+testCountEvenNumbers([-2,-1,0],2);
+testCountEvenNumbers([23,57,98,54],2);
+testCountEvenNumbers([56,78,93,103],2);
+testCountEvenNumbers([2,3,4,7,8,9,6,7,3,2,60,78,674],8);
+//------------------------------------------------------------------------------------------------------//
+const testCountNumbersAbove = function(input,expectedOutput,secondInput) { 
+return assert.deepEqual(countNumbersAbove(input,secondInput),expectedOutput);
+}
 
 // 13. counting how many numbers above a threshold.
-testAssertion(lib.countNumbersAbove,[21,34,6],2,8);
-testAssertion(lib.countNumbersAbove,[23,57,98,54],4,0);
-testAssertion(lib.countNumbersAbove,[56,78,93,103],2,79);
-testAssertion(lib.countNumbersAbove,[2,3,4,7,8,9,6,7,3,2,60,78,674],5,7);
+testCountNumbersAbove([21,34,6],2,8);
+testCountNumbersAbove([23,57,98,54],4,0);
+testCountNumbersAbove([56,78,93,103],2,79);
+testCountNumbersAbove([2,3,4,7,8,9,6,7,3,2,60,78,674],5,7);
+////------------------------------------------------------------------------------------------------------//
+const testCountNumbersBelow = function(input,expectedOutput,secondInput) { 
+return assert.deepEqual(countNumbersBelow(input,secondInput),expectedOutput);
+}
 
 // 14. counting how many numbers below a threshold.
-testAssertion(lib.countNumbersBelow,[21,34,6],1,8);
-testAssertion(lib.countNumbersBelow,[23,57,98,54],0,0);
-testAssertion(lib.countNumbersBelow,[56,78,93,103],2,79);
-testAssertion(lib.countNumbersBelow,[2,3,4,7,8,9,6,7,3,2,60,78,674],6,7);
+testCountNumbersBelow([21,34,6],1,8);
+testCountNumbersBelow([23,57,98,54],0,0);
+testCountNumbersBelow([56,78,93,103],2,79);
+testCountNumbersBelow([2,3,4,7,8,9,6,7,3,2,60,78,674],6,7);
+//------------------------------------------------------------------------------------------------------//
+const testReverseArray = function(input,expectedOutput) { 
+return assert.deepEqual(reverseArray(input),expectedOutput);
+}
 
 // 15. reversing an array.
-testAssertion(lib.reverseArray,[21,34,6],[6,34,21]);
-testAssertion(lib.reverseArray,[-2,-1,0],[0,-1,-2]);
-testAssertion(lib.reverseArray,[23,57,98,54],[54,98,57,23]);
-testAssertion(lib.reverseArray,[56,78,93,103],[103,93,78,56]);
+testReverseArray([21,34,6],[6,34,21]);
+testReverseArray([-2,-1,0],[0,-1,-2]);
+testReverseArray([23,57,98,54],[54,98,57,23]);
+testReverseArray([56,78,93,103],[103,93,78,56]);
+//------------------------------------------------------------------------------------------------------//
+const testFindIndex = function(input,expectedOutput,secondInput) { 
+return assert.deepEqual(findIndex(input,secondInput),expectedOutput);
+}
 
 // 16. Index of number.
-testAssertion(lib.findIndex,[21,34,6],2,6);
-testAssertion(lib.findIndex,[23,57,98,54],0,23);
-testAssertion(lib.findIndex,[56,78,93,103],3,103);
-testAssertion(lib.findIndex,[2,3,4,7,8,9,6,7,3,2,60,78,674],undefined,61);
+testFindIndex([21,34,6],2,6);
+testFindIndex([23,57,98,54],0,23);
+testFindIndex([56,78,93,103],3,103);
+testFindIndex([2,3,4,7,8,9,6,7,3,2,60,78,674],undefined,61);
+//------------------------------------------------------------------------------------------------------//
+const testIsAscending = function(input,expectedOutput) { 
+return assert.deepEqual(isAscending(input),expectedOutput);
+}
 
 // 17. check ascending order.
-testAssertion(lib.isAscending,[21,34,6],false);
-testAssertion(lib.isAscending,[23,54,57,98],true);
-testAssertion(lib.isAscending,[56,78,93,103],true);
-testAssertion(lib.isAscending,[2,3,4,7,8,9,6,7,3,2,60,78,674],false);
+testIsAscending([21,34,6],false);
+testIsAscending([23,54,57,98],true);
+testIsAscending([56,78,93,103],true);
+testIsAscending([2,3,4,7,8,9,6,7,3,2,60,78,674],false);
+//------------------------------------------------------------------------------------------------------//
+const testIsDescending = function(input,expectedOutput) { 
+return assert.deepEqual(isDescending(input),expectedOutput);
+}
 
 // 18. check descending order.
-testAssertion(lib.isDescending,[34,21,6],true);
-testAssertion(lib.isDescending,[23,57,98,54],false);
-testAssertion(lib.isDescending,[56,78,93,103],false);
-testAssertion(lib.isDescending,[674,78,60,9,8,7,7,6,4,3,3,2,2],true);
+testIsDescending([34,21,6],true);
+testIsDescending([23,57,98,54],false);
+testIsDescending([56,78,93,103],false);
+testIsDescending([674,78,60,9,8,7,7,6,4,3,3,2,2],true);
+//------------------------------------------------------------------------------------------------------//
+const testExtractDigits = function(input,expectedOutput) { 
+return assert.deepEqual(extractDigits(input),expectedOutput);
+}
 
 // 19. Extract digits.
-assert.deepEqual(lib.extractDigits(0),[0]);
-assert.deepEqual(lib.extractDigits(65),[6,5]);
-assert.deepEqual(lib.extractDigits(12345),[1,2,3,4,5]);
-assert.deepEqual(lib.extractDigits(7568493),[7,5,6,8,4,9,3]);
+testExtractDigits(0,[0]);
+testExtractDigits(65,[6,5]);
+testExtractDigits(12345,[1,2,3,4,5]);
+testExtractDigits(7568493,[7,5,6,8,4,9,3]);
+//------------------------------------------------------------------------------------------------------//
+const testSelectUniqueElements = function(input,expectedOutput) { 
+return assert.deepEqual(selectUniqueElements(input),expectedOutput);
+}
 
 // 20. unique.
-testAssertion(lib.selectUniqueElements,[23,57,98,98,54],[23,57,98,54]);
-testAssertion(lib.selectUniqueElements,[56,78,78,93,103],[56,78,93,103]);
-testAssertion(lib.selectUniqueElements,[21,34,6,21,45,6,3,87,64,46,46],[21,34,6,45,3,87,64,46]);
-testAssertion(lib.selectUniqueElements,[2,3,4,7,8,9,6,7,3,2,60,78,674],[2,3,4,7,8,9,6,60,78,674]);
+testSelectUniqueElements([23,57,98,98,54],[23,57,98,54]);
+testSelectUniqueElements([56,78,78,93,103],[56,78,93,103]);
+testSelectUniqueElements([21,34,6,21,45,6,3,87,64,46,46],[21,34,6,45,3,87,64,46]);
+testSelectUniqueElements([2,3,4,7,8,9,6,7,3,2,60,78,674],[2,3,4,7,8,9,6,60,78,674]);
+//------------------------------------------------------------------------------------------------------//
+const testSelectUnion = function(input,secondInput,expectedOutput) { 
+  return assert.deepEqual(selectUnion(input,secondInput),expectedOutput);
+}
 
 // 21. union.
-assert.deepEqual(lib.selectUnion([0],[0]),[0]);
-assert.deepEqual(lib.selectUnion([6,5],[6,5]),[6,5]);
-assert.deepEqual(lib.selectUnion([1,2,3,2,4,4,30,5],[1,4,2,30,4,50]),[1,2,3,4,30,5,50]);
-assert.deepEqual(lib.selectUnion([-1,-4,-1,7,6,9,9,0],[7,-5,6,8,4,9,3]),[-1,-4,7,6,9,0,-5,8,4,3]);
+testSelectUnion([0],[0],[0]);
+testSelectUnion([6,5],[6,5],[6,5]);
+testSelectUnion([1,2,3,2,4,4,30,5],[1,4,2,30,4,50],[1,2,3,4,30,5,50]);
+testSelectUnion([-1,-4,-1,7,6,9,9,0],[7,-5,6,8,4,9,3],[-1,-4,7,6,9,0,-5,8,4,3]);
+//------------------------------------------------------------------------------------------------------//
+const testIntersect = function(input,secondInput,expectedOutput) { 
+return assert.deepEqual(intersect(input,secondInput),expectedOutput);
+}
 
 // 22. intersection.
-assert.deepEqual(lib.intersect([0],[0]),[0]);
-assert.deepEqual(lib.intersect([6,5],[6,5]),[6,5]);
-assert.deepEqual(lib.intersect([1,2,3,4,30,5],[1,4,2,30,50]),[1,4,2,30]);
-assert.deepEqual(lib.intersect([-1,-4,7,6,9,0],[7,-5,6,8,-1,4,9,3]),[7,6,-1,9]);
+testIntersect([0],[0],[0]);
+testIntersect([6,5],[6,5],[6,5]);
+testIntersect([1,2,3,4,30,5],[1,4,2,30,50],[1,4,2,30]);
+testIntersect([-1,-4,7,6,9,0],[7,-5,6,8,-1,4,9,3],[7,6,-1,9]);
+//------------------------------------------------------------------------------------------------------//
+const testDiffer = function(input,secondInput,expectedOutput) { 
+return assert.deepEqual(differ(input,secondInput),expectedOutput);
+}
 
 // 23. Difference.
-assert.deepEqual(lib.differ([0],[0]),[]);
-assert.deepEqual(lib.differ([6,5],[6,5]),[]);
-assert.deepEqual(lib.differ([1,2,3,2,4,4,30,5],[1,4,2,30,4,50]),[3,5]);
-assert.deepEqual(lib.differ([-1,-4,-1,7,6,9,9,0],[7,-5,8,-1,4,9,3]),[-4,6,0]);
+testDiffer([0],[0],[]);
+testDiffer([6,5],[6,5],[]);
+testDiffer([1,2,3,2,4,4,30,5],[1,4,2,30,4,50],[3,5]);
+testDiffer([-1,-4,-1,7,6,9,9,0],[7,-5,8,-1,4,9,3],[-4,6,0]);
+//------------------------------------------------------------------------------------------------------//
+const testIsSubset = function(input,secondInput,expectedOutput) { 
+return assert.deepEqual(isSubset(input,secondInput),expectedOutput);
+}
 
 // 24. Is Subset.
-assert.deepEqual(lib.isSubset([1,2],[1]),true);
-assert.deepEqual(lib.isSubset([1,2,],[1,]),true);
-assert.deepEqual(lib.isSubset([2,5,7,3,1],[2,1,8,1]),false);
-assert.deepEqual(lib.isSubset([1,2,5,7,3,1],[2,1,1]),true);
+testIsSubset([1,2],[1],true);
+testIsSubset([1,2,],[1,],true);
+testIsSubset([2,5,7,3,1],[2,1,8,1],false);
+testIsSubset([1,2,5,7,3,1],[2,1,1],true);
+//------------------------------------------------------------------------------------------------------//
+const testZip = function(input,secondInput,expectedOutput) { 
+return assert.deepEqual(zip(input,secondInput),expectedOutput);
+}
 
 // 25. Zip.
-assert.deepEqual(lib.zip([1,2],[1]),[[1,1]]);
-assert.deepEqual(lib.zip([1,2,],[1,]),[[1,1]]);
-assert.deepEqual(lib.zip([2,5,7,3,1],[2,1,1]),[[2,2],[1,5],[1,7]]);
-assert.deepEqual(lib.zip([1,2,5,7,3,1],[2,1,1]),[[2,1],[1,2],[1,5]]);
+testZip([1,2],[1],[[1,1]]);
+testZip([1,2,],[1,],[[1,1]]);
+testZip([2,5,7,3,1],[2,1,1],[[2,2],[1,5],[1,7]]);
+testZip([1,2,5,7,3,1],[2,1,1],[[2,1],[1,2],[1,5]]);
+//------------------------------------------------------------------------------------------------------//
+const testRotate = function(input,secondInput,expectedOutput) { 
+return assert.deepEqual(rotate(input,secondInput),expectedOutput);
+}
 
 // 26. Rotate.
-assert.deepEqual(lib.rotate([0],0),[0]);
-assert.deepEqual(lib.rotate([1,2],1),[2,1]);
-assert.deepEqual(lib.rotate([2,5,7,3,1],4),[1,2,5,7,3]);
-assert.deepEqual(lib.rotate([1,2,5,7,3,1],3),[7,3,1,1,2,5]);
+testRotate([0],0,[0]);
+testRotate([1,2],1,[2,1]);
+testRotate([2,5,7,3,1],4,[1,2,5,7,3]);
+testRotate([1,2,5,7,3,1],3,[7,3,1,1,2,5]);
+//------------------------------------------------------------------------------------------------------//
+const testPartition = function(input,secondInput,expectedOutput) { 
+return assert.deepEqual(partition(input,secondInput),expectedOutput);
+}
 
 // 27. partition.
-assert.deepEqual(lib.partition([0],0),[[0],[]]);
-assert.deepEqual(lib.partition([1,2],1),[[1],[2]]);
-assert.deepEqual(lib.partition([2,5,7,3,1],2),[[1,2],[5,7,3]]);
-assert.deepEqual(lib.partition([1,2,5,7,3,1],3),[[1,2,1,3],[5,7]]);
+testPartition([0],0,[[0],[]]);
+testPartition([1,2],1,[[1],[2]]);
+testPartition([2,5,7,3,1],2,[[1,2],[5,7,3]]);
+testPartition([1,2,5,7,3,1],3,[[1,2,1,3],[5,7]]);
+//------------------------------------------------------------------------------------------------------//
 
 console.log("Test Passed ...!!!!");

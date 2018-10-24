@@ -19,7 +19,7 @@ const add = function(number1,number2) {
 }
 
 const addNumbers = function(inputNumbers) {
-  return inputNumbers.reduce(add);
+  return inputNumbers.reduce(add,0);
 }
 
 const reverseConcat = function(initialValue,currentValue) {
@@ -123,7 +123,7 @@ const countNumbersBelow = function(inputNumbers,threshold) {
 }
 
 const reverseArray = function(inputNumbers) {
-  return inputNumbers.reduce(reverseConcat);
+  return inputNumbers.reduce(reverseConcat,[]);
 }
 
 const findIndex = function(inputNumbers,number) {
@@ -256,7 +256,9 @@ const rotate = function(array,index) {
 const partition = function(array,number) {
   let partition = [];
   partition[0] = selectNumbersBelow(array,number);
-  partition[0].push(number);
+  if(array.length > 0){
+    partition[0].push(number);
+  }
   partition[1] = selectNumbersAbove(array,number);
   return partition;
 }

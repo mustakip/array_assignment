@@ -1,5 +1,5 @@
 const assert = require("assert");
-const arrayLib = require("./arrayFunctionsLibrary.js"); 
+const arrayLib = require("./arrayLibrary.js"); 
 
 const {selectOddNumbers, selectEvenNumbers} = arrayLib;
 const {addNumbers, reverse} = arrayLib;
@@ -22,6 +22,7 @@ const testSelectOddNumbers = function(input,expectedOutput) {
 
 // 1. selecting odd number.
 testSelectOddNumbers([-2,-1,0],[-1]);
+testSelectOddNumbers([],[]);
 testSelectOddNumbers([21,34,6],[21]);
 testSelectOddNumbers([23,57,98,54],[23,57]);
 testSelectOddNumbers([56,78,93,103],[93,103]);
@@ -32,6 +33,7 @@ const testSelectEvenNumbers = function(input,expectedOutput) {
 }
 
 // 2. selecting even number.
+testSelectEvenNumbers([],[]);
 testSelectEvenNumbers([-2,-1,0],[-2,0]);
 testSelectEvenNumbers([21,34,6],[34,6]);
 testSelectEvenNumbers([23,57,98,54],[98,54]);
@@ -44,6 +46,7 @@ const testAddNumbers = function(input,expectedOutput) {
 
 // 3. sum of list of numbers.
 testAddNumbers([21,34,6],61);
+testAddNumbers([],0);
 testAddNumbers([-2,-1,0],-3);
 testAddNumbers([23,57,98,54],232);
 testAddNumbers([56,78,93,103],330);
@@ -55,6 +58,7 @@ const testReverse = function(input,expectedOutput) {
 
 // 4. printing reverse.
 testReverse([21,34,6],[6,34,21]);
+testReverse([],[]);
 testReverse([-2,-1,0],[0,-1,-2]);
 testReverse([23,57,98,54],[54,98,57,23]);
 testReverse([56,78,93,103],[103,93,78,56]);
@@ -65,6 +69,7 @@ const testSelectEverySecondNo = function(input,expectedOutput) {
 
 // 5. selecting every second element. 
 testSelectEverySecondNo([21,34,6],[34]);
+testSelectEverySecondNo([],[]);
 testSelectEverySecondNo([-2,-1,0],[-1]);
 testSelectEverySecondNo([23,57,98,54],[57,54]);
 testSelectEverySecondNo([56,78,93,103],[78,103]);
@@ -75,6 +80,7 @@ const testReverseFibonacci = function(input,expectedOutput) {
 }
 
 // 6. reverse fibonacci.
+testReverseFibonacci(-2,[]);
 testReverseFibonacci(0,[]);
 testReverseFibonacci(1,[0]);
 testReverseFibonacci(2,[1,0]);
@@ -87,6 +93,7 @@ const testFindGreatestNumber = function(input,expectedOutput) {
 
 // 7. greatest numberin a list.
 testFindGreatestNumber([-2,-1,0],0);
+testFindGreatestNumber([4],4);
 testFindGreatestNumber([21,34,6],34);
 testFindGreatestNumber([23,57,98,54],98);
 testFindGreatestNumber([56,78,93,103],103);
@@ -97,6 +104,7 @@ return assert.deepEqual(findSmallestNumber(input),expectedOutput);
 }
 
 // 8. lowest number in a list.
+testFindSmallestNumber([-5],-5);
 testFindSmallestNumber([21,34,6],6);
 testFindSmallestNumber([-2,-1,0],-2);
 testFindSmallestNumber([23,57,98,54],23);
@@ -108,26 +116,31 @@ return assert.deepEqual(findAverage(input),expectedOutput);
 }
 
 // 9. find average of a list.
+testAverage([0],0);
+testAverage([1],1);
 testAverage([-2,-1,0],-1);
 testAverage([21,34,8],21);
 testAverage([23,57,98,54],58);
 testAverage([56,78,93,103],82.5);
 //------------------------------------------------------------------------------------------------------//
-const testFindLength = function(input,expectedOutput) { 
+const testMapLength = function(input,expectedOutput) { 
 return assert.deepEqual(findLength(input),expectedOutput);
 }
 
 // 10. mapping lengths.
-testFindLength([""],[0]);
-testFindLength(["annu"],[4]);
-testFindLength(["leela","malliSir"],[5,8]);
-testFindLength(["musta","afftab","sai","deepika"],[5,6,3,7]);
+testMapLength([""],[0]);
+testMapLength([],[]);
+testMapLength(["annu"],[4]);
+testMapLength(["leela","malliSir"],[5,8]);
+testMapLength(["musta","afftab","sai","deepika"],[5,6,3,7]);
 //------------------------------------------------------------------------------------------------------//
 const testCountOddNumbers = function(input,expectedOutput) { 
 return assert.deepEqual(countOddNumbers(input),expectedOutput);
 }
 
 // 11. counting odd numbers.
+testCountOddNumbers([],0);
+testCountOddNumbers([1],1);
 testCountOddNumbers([21,34,6],1);
 testCountOddNumbers([-2,-1,0],1);
 testCountOddNumbers([23,57,98,54],2);
@@ -139,6 +152,7 @@ return assert.deepEqual(countEvenNumbers(input),expectedOutput);
 }
 
 // 12. counting even numbers.
+testCountEvenNumbers([],0);
 testCountEvenNumbers([21,34,6],2);
 testCountEvenNumbers([-2,-1,0],2);
 testCountEvenNumbers([23,57,98,54],2);
@@ -150,6 +164,7 @@ return assert.deepEqual(countNumbersAbove(input,secondInput),expectedOutput);
 }
 
 // 13. counting how many numbers above a threshold.
+testCountNumbersAbove([],0,1);
 testCountNumbersAbove([21,34,6],2,8);
 testCountNumbersAbove([23,57,98,54],4,0);
 testCountNumbersAbove([56,78,93,103],2,79);
@@ -161,6 +176,7 @@ return assert.deepEqual(countNumbersBelow(input,secondInput),expectedOutput);
 
 // 14. counting how many numbers below a threshold.
 testCountNumbersBelow([21,34,6],1,8);
+testCountNumbersBelow([],0,8);
 testCountNumbersBelow([23,57,98,54],0,0);
 testCountNumbersBelow([56,78,93,103],2,79);
 testCountNumbersBelow([2,3,4,7,8,9,6,7,3,2,60,78,674],6,7);
@@ -171,6 +187,7 @@ return assert.deepEqual(reverseArray(input),expectedOutput);
 
 // 15. reversing an array.
 testReverseArray([21,34,6],[6,34,21]);
+testReverseArray([],[]);
 testReverseArray([-2,-1,0],[0,-1,-2]);
 testReverseArray([23,57,98,54],[54,98,57,23]);
 testReverseArray([56,78,93,103],[103,93,78,56]);
@@ -191,6 +208,7 @@ return assert.deepEqual(isAscending(input),expectedOutput);
 
 // 17. check ascending order.
 testIsAscending([21,34,6],false);
+testIsAscending([],true);
 testIsAscending([23,54,57,98],true);
 testIsAscending([56,78,93,103],true);
 testIsAscending([2,3,4,7,8,9,6,7,3,2,60,78,674],false);
@@ -201,6 +219,7 @@ return assert.deepEqual(isDescending(input),expectedOutput);
 
 // 18. check descending order.
 testIsDescending([34,21,6],true);
+testIsDescending([],true);
 testIsDescending([23,57,98,54],false);
 testIsDescending([56,78,93,103],false);
 testIsDescending([674,78,60,9,8,7,7,6,4,3,3,2,2],true);
@@ -221,6 +240,8 @@ return assert.deepEqual(selectUniqueElements(input),expectedOutput);
 
 // 20. unique.
 testSelectUniqueElements([23,57,98,98,54],[23,57,98,54]);
+testSelectUniqueElements([],[]);
+testSelectUniqueElements([0],[0]);
 testSelectUniqueElements([56,78,78,93,103],[56,78,93,103]);
 testSelectUniqueElements([21,34,6,21,45,6,3,87,64,46,46],[21,34,6,45,3,87,64,46]);
 testSelectUniqueElements([2,3,4,7,8,9,6,7,3,2,60,78,674],[2,3,4,7,8,9,6,60,78,674]);
@@ -291,6 +312,7 @@ return assert.deepEqual(partition(input,secondInput),expectedOutput);
 
 // 27. partition.
 testPartition([0],0,[[0],[]]);
+testPartition([],0,[[],[]]);
 testPartition([1,2],1,[[1],[2]]);
 testPartition([2,5,7,3,1],2,[[1,2],[5,7,3]]);
 testPartition([1,2,5,7,3,1],3,[[1,2,1,3],[5,7]]);

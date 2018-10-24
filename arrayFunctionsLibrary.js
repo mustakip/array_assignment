@@ -70,7 +70,7 @@ const findSmaller = function(previousElement,currentElement) {
 }
 
 const findSmallestNumber = function(inputNumbers) {
- return inputNumbers.reduce(findSmaller); 
+  return inputNumbers.reduce(findSmaller); 
 }
 
 const findAverage = function(inputNumbers) {
@@ -107,14 +107,14 @@ const selectNumbersAbove = function(inputNumbers,threshold) {
   return numbersAbove;
 }
 
-const isLesserThan = function(threshold) {
+const isLessThan = function(threshold) {
   return function(number) {
     return number < threshold;
   }
 }
 
 const selectNumbersBelow = function(inputNumbers,threshold) {
-  return inputNumbers.filter(isLesserThan(threshold));
+  return inputNumbers.filter(isLessThan(threshold));
 }
 
 const countNumbersBelow = function(inputNumbers,threshold) {
@@ -213,7 +213,7 @@ const isPresent = function(array1) {
 }
 
 const isSubset = function(array1,array2) {
- return array2.every(isPresent(array1));
+  return array2.every(isPresent(array1));
 }
 
 const findshorter = function(array1,array2) {

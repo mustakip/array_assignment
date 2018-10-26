@@ -146,16 +146,8 @@ const isAscending = function(inputNumbers) {
   return inputNumbers.reduce(checkGreater,{number : inputNumbers[0],state : true}).state;
 }
 
-const checkLesser = function(previousState,currentValue) {
-  let {number,state} = previousState;
-  if(currentValue <= number && state){
-    return {number : currentValue, state : true };
-  }
-  return {number : previousState.number,state : false}
-}
-
 const isDescending = function(inputNumbers) {
-  return inputNumbers.reduce(checkLesser,{number : inputNumbers[0],state : true}).state;
+  return isAscending(reverse(inputNumbers));
 }
 
 const extractDigits = function(input) {
